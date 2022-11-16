@@ -30,5 +30,13 @@ export const {
             textYellow:'#d09400',
             textLink:'#0275d5',
         }
+    },
+
+    media:{
+        premiumButtonDesktop:'(min-width:530px)',
+        premiumButtonPhone:'(max-width:529px)',
+
+        logoDesktop:'(min-width:621px)',
+        logoPhone:'(max-width:620px)',
     }
 });

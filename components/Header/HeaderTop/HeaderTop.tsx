@@ -1,27 +1,44 @@
-import Image from 'next/image';
-import logo from '../../../public/images/logo.png';
 import { styled } from "../../../stitches.config";
-import Menu from './Menu';
+import Menu from './Menu/Menu';
 
 
 export default function HeaderTop(){
 
     const Div = styled('div', {
+        width:'100vw',
         height:60,
+        position:'fixed',
         backgroundColor:'$black',
-
-        display:'flex',
     });
 
     const Link = styled('a', {
-        height:60,
-        flexBasis:'90%',
+        zIndex:-1,
+        position:'absolute',
+        top:'50%',
+        left:'50%',
+        transform:'translate(-50%, -50%)',
+    });
 
-        paddingLeft:'13rem',
+    const Img = styled('div', {
+        width:170,
+        height:40,
 
-        display:'flex',
-        justifyContent:'center',
-        alignItems:'center'
+        backgroundRepeat:'no-repeat',
+        backgroundPosition:'center',
+
+        variants:{
+            source:{
+                desktop:{
+                    backgroundImage:'url(/images/logo/logo_desktop.png)',
+                    backgroundSize:'100%',
+
+                },
+                phone:{
+                    backgroundImage:'url(/images/logo/logo_phone.png)',
+                    backgroundSize:'50%',
+                }
+            }
+        }
     });
 
 
@@ -29,7 +46,7 @@ export default function HeaderTop(){
     return(
         <Div>
             <Link href="/">
-                <Image src={logo} alt="Logo"></Image>
+                <Img source={{'@logoDesktop': 'desktop', '@logoPhone': 'phone'}}></Img>
             </Link>
 
             <Menu></Menu>
