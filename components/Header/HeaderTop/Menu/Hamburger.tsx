@@ -8,7 +8,7 @@ const HamburgerButton = styled('div', {
 
     cursor:'pointer',
     borderRadius:4,
-    backgroundColor:'$darkGray',
+    backgroundColor:'$grayDark',
 
     display:'flex',
     flexDirection:'column',

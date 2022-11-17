@@ -15,9 +15,10 @@ export const {
         colors:{
             black:'#000000',
             white:'#ffffff',
-            lightGray:'#d9d9d9',
-            midGray:'#40444c',
-            darkGray:'#333333',
+            grayLight:'#d9d9d9',
+            grayMid:'#40444c',
+            grayMenu:'#808080',
+            grayDark:'#333333',
 
             red:'#e75971',
             blue:'#0000ff',

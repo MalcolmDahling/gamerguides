@@ -6,7 +6,7 @@ const PremiumButton = styled('div', {
     
     cursor:'pointer',
     borderRadius:4,
-    backgroundColor:'$darkGray',
+    backgroundColor:'$grayDark',
     color:'$white',
     fontSize:14,
     fontWeight:'bold',
