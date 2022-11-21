@@ -27,7 +27,7 @@ const PremiumButton = styled('div', {
                 paddingLeft:5,
                 paddingRight:5
             },
-            phone:{
+            mobile:{
                 width:28
             }
         }
@@ -42,11 +42,11 @@ const PremiumIcon = styled('img', {
 const Span = styled('span', {
 
     variants:{
-        desktopPhone:{
+        desktopMobile:{
             desktop:{
                 display:'inline'
             },
-            phone:{
+            mobile:{
                 display:'none'
             }
         }
@@ -57,9 +57,9 @@ export default function Premium(){
 
     return(
         <Link href="/premium" passHref style={{textDecoration:'none'}}>
-            <PremiumButton variableWidth={{'@premiumButtonDesktop': 'desktop', '@premiumButtonPhone': 'phone'}}>
+            <PremiumButton variableWidth={{'@premiumButtonDesktop': 'desktop', '@premiumButtonMobile': 'mobile'}}>
                     <PremiumIcon src="/images/headerTop/star.png"></PremiumIcon>
-                    <Span desktopPhone={{'@premiumButtonDesktop': 'desktop', '@premiumButtonPhone': 'phone'}}>Go Premium</Span>
+                    <Span desktopMobile={{'@premiumButtonDesktop': 'desktop', '@premiumButtonMobile': 'mobile'}}>Go Premium</Span>
             </PremiumButton>
         </Link>
     );

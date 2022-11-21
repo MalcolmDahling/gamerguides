@@ -35,9 +35,9 @@ export const {
 
     media:{
         premiumButtonDesktop:'(min-width:530px)',
-        premiumButtonPhone:'(max-width:529px)',
+        premiumButtonMobile:'(max-width:529px)',
 
-        logoDesktop:'(min-width:621px)',
-        logoPhone:'(max-width:620px)',
+        logoAndFooterDesktop:'(min-width:621px)',
+        logoAndFooterMobile:'(max-width:620px)',
     }
 });

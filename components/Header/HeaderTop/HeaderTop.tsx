@@ -33,7 +33,7 @@ export default function HeaderTop(){
                     backgroundSize:'100%',
 
                 },
-                phone:{
+                mobile:{
                     backgroundImage:'url(/images/logo/logo_phone.png)',
                     backgroundSize:'50%',
                 }
@@ -46,7 +46,7 @@ export default function HeaderTop(){
     return(
         <Div>
             <Link href="/">
-                <Img source={{'@logoDesktop': 'desktop', '@logoPhone': 'phone'}}></Img>
+                <Img source={{'@logoAndFooterDesktop': 'desktop', '@logoAndFooterMobile': 'mobile'}}></Img>
             </Link>
 
             <Menu></Menu>

@@ -20,7 +20,6 @@ const Triangle = styled('div', {
     height:100,
     clipPath:'polygon(0% 100%,50% 0%,100% 100%)',
     
-
     variants:{
         top:{
             upper:{
@@ -43,6 +42,10 @@ const Triangle = styled('div', {
 });
 
 const Logo = styled('img', {
+    position:'absolute',
+    transform:'translate(-50%)',
+    left:'50%',
+    top:'-2.5%',
     width:65,
     height:65,
 });
@@ -52,10 +55,9 @@ export default function FooterTop(){
     return(
         <TopDiv>
             <Bar></Bar>
-            <Triangle top="upper" backgroundColor="lighter"></Triangle>
-            <Triangle top="lower" backgroundColor="darker">
-                <Logo src="/images/logo/logo.svg"></Logo>
-            </Triangle>
+            <Triangle top="upper" backgroundColor="lighter"></Triangle>´
+            <Triangle top="lower" backgroundColor="darker"></Triangle>
+            <Logo src="/images/logo/logo.svg"></Logo>
         </TopDiv>
     );
 }
