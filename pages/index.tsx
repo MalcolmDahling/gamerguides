@@ -1,8 +1,4 @@
-export default function Home() {
-    //https://www.gamerguides.com/
-
-
-
+export default function Index() {
 
     return (
         <>

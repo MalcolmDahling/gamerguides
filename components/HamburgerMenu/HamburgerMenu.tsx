@@ -15,7 +15,6 @@ const close = keyframes({
 });
 
 const Div = styled('div', {
-
     position:'fixed',
     top:60,
     bottom:0,
