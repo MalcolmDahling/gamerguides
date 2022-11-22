@@ -37,6 +37,9 @@ export const {
         premiumButtonDesktop:'(min-width:530px)',
         premiumButtonMobile:'(max-width:529px)',
 
+        menuPaddingRightDesktop:'(min-width:900px)',
+        menuPaddingRightMobile:'(max-width:899px)',
+
         logoAndFooterDesktop:'(min-width:621px)',
         logoAndFooterMobile:'(max-width:620px)',
     }

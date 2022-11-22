@@ -1,10 +1,11 @@
 import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
 import { RecoilRoot } from 'recoil';
-import Header from '../components/Header/Header';
-import HamburgerMenu from '../components/HamburgerMenu/HamburgerMenu';
-import WrapperFullPage from '../components/WrapperFullPage/WrapperFullPage';
-import Footer from '../components/Footer/Footer';
+import Header from '../components/Layout/Header/Header';
+import HamburgerMenu from '../components/Layout/HamburgerMenu/HamburgerMenu';
+import WrapperFullPage from '../components/Layout/WrapperFullPage/WrapperFullPage';
+import Footer from '../components/Layout/Footer/Footer';
+import Main from '../components/Layout/Main/Main';
 
 export default function App({ Component, pageProps }: AppProps) {
     
@@ -17,9 +18,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
                 <HamburgerMenu></HamburgerMenu>
 
-                <main>
+                <Main>
                     <Component {...pageProps} />
-                </main>
+                </Main>
                 
                 <Footer></Footer>
             </WrapperFullPage>

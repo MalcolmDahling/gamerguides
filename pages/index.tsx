@@ -1,8 +1,8 @@
+import Carousel from "../components/Carousel/Carousel";
+
 export default function Index() {
 
     return (
-        <>
-            index
-        </>
+        <Carousel></Carousel>
     );
 }
