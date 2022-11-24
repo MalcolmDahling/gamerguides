@@ -4,10 +4,23 @@ import { styled } from "../../../stitches.config";
 const Div = styled('div', {
     marginTop:35,
     marginBottom:55,
+
+    display:'flex',
+    justifyContent:'start',
+    gap:15,
+
+    variants:{
+        flexSpaceBetween:{
+            true:{
+                justifyContent:'space-between',
+                flexWrap:'wrap',
+                gap:5
+            }
+        }
+    },
 });
 
 const StyledLink = styled(Link, {
-    marginRight:15,
     paddingTop:15,
     paddingBottom:15,
     paddingLeft:20,
@@ -27,18 +40,30 @@ const StyledLink = styled(Link, {
 
     '&:hover img':{
         filter:'none'
+    },
+
+    display:'flex',
+    justifyContent:'center',
+    gap:10,
+
+    variants:{
+        flexGrow:{
+            true:{
+                paddingLeft:5,
+                paddingRight:5,
+                flexGrow:1,
+            }
+        }
     }
 });
 
 const Img = styled('img', {
-    position:'absolute',
     width:20,
-    marginRight:10,
     filter:'brightness(0) saturate(100%) invert(99%) sepia(2%) saturate(2%) hue-rotate(183deg) brightness(111%) contrast(100%)'
 });
 
 const Span = styled('span', {
-    marginLeft:30,
+
 });
 
 interface props{
@@ -49,20 +74,20 @@ interface props{
 export default function Links(props:props){
 
     return(
-        <Div>
+        <Div flexSpaceBetween={{'@carouselMobile': true}}>
             {props.review &&
-                <StyledLink href={`/${props.slug}/review`}>
+                <StyledLink href={`/${props.slug}/review`} flexGrow={{'@carouselMobile': true}}>
                     <Img src="/images/index/carousel/review.png"></Img>
                     <Span>Review</Span>
                 </StyledLink>
             }
 
-            <StyledLink href={`/${props.slug}/guide`}>
+            <StyledLink href={`/${props.slug}/guide`} flexGrow={{'@carouselMobile': true}}>
                 <Img src="/images/index/carousel/guide.png"></Img>
                 <Span>Guide</Span>
             </StyledLink>
 
-            <StyledLink href={`/${props.slug}`}>
+            <StyledLink href={`/${props.slug}`} flexGrow={{'@carouselMobile': true}}>
                 <Img src="/images/index/carousel/about.png"></Img>
                 <Span>About</Span>
             </StyledLink>

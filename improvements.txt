@@ -1,0 +1,8 @@
+----- HEADER -----
+Searchbar in header doesn't close when clicked again. Fixed.
+
+
+----- CAROUSEL -----
+Game description disappears between 620-600px width. Fixed.
+Links don't really fit at very small screen sizes. Fixed with flexWrap:'wrap'.
+
