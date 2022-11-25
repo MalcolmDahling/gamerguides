@@ -68,35 +68,13 @@ export default function Carousel(){
 
             setTimeout(() => {
 
-                if(fromArrow){
-
-                    setPositions([
-                        positions[0] === 2200 ? -2200 : positions[0] + 1100,
-                        positions[1] === 2200 ? -2200 : positions[1] + 1100,
-                        positions[2] === 2200 ? -2200 : positions[2] + 1100,
-                        positions[3] === 2200 ? -2200 : positions[3] + 1100,
-                        positions[4] === 2200 ? -2200 : positions[4] + 1100,
-                    ]);
-                }
-
-                else{
-
-                    if(activeGame === 0){
-                        setPositions([0, 1100, 2200, -2200, -1100]);
-                    }
-                    if(activeGame === 1){
-                        setPositions([-1100, 0, 1100, 2200, -2200]);
-                    }
-                    if(activeGame === 2){
-                        setPositions([-2200, -1100, 0, 1100, 2200]);
-                    }
-                    if(activeGame === 3){
-                        setPositions([2200, -2200, -1100, 0, 1100]);
-                    }
-                    if(activeGame === 4){
-                        setPositions([1100, 2200, -2200, -1100, 0]);
-                    }
-                }
+                setPositions([
+                    positions[0] === 2200 ? -2200 : positions[0] + 1100,
+                    positions[1] === 2200 ? -2200 : positions[1] + 1100,
+                    positions[2] === 2200 ? -2200 : positions[2] + 1100,
+                    positions[3] === 2200 ? -2200 : positions[3] + 1100,
+                    positions[4] === 2200 ? -2200 : positions[4] + 1100,
+                ]);
 
                 setAnimDirection('');
             }, 400);
@@ -105,8 +83,6 @@ export default function Carousel(){
 
 
     function moveRight(fromArrow?:boolean){
-
-        console.log(positions);
 
         if(animDirection === ''){
 
@@ -124,35 +100,13 @@ export default function Carousel(){
 
             setTimeout(() => {
 
-                if(fromArrow){
-
-                    setPositions([
-                        positions[0] === -2200 ? 2200 : positions[0] - 1100,
-                        positions[1] === -2200 ? 2200 : positions[1] - 1100,
-                        positions[2] === -2200 ? 2200 : positions[2] - 1100,
-                        positions[3] === -2200 ? 2200 : positions[3] - 1100,
-                        positions[4] === -2200 ? 2200 : positions[4] - 1100,
-                    ]);
-                }
-
-                else{
-
-                    if(activeGame === 0){
-                        setPositions([0, 1100, 2200, -2200, -1100]);
-                    }
-                    if(activeGame === 1){
-                        setPositions([-1100, 0, 1100, 2200, -2200]);
-                    }
-                    if(activeGame === 2){
-                        setPositions([-2200, -1100, 0, 1100, 2200]);
-                    }
-                    if(activeGame === 3){
-                        setPositions([2200, -2200, -1100, 0, 1100]);
-                    }
-                    if(activeGame === 4){
-                        setPositions([1100, 2200, -2200, -1100, 0]);
-                    }
-                }
+                setPositions([
+                    positions[0] === -2200 ? 2200 : positions[0] - 1100,
+                    positions[1] === -2200 ? 2200 : positions[1] - 1100,
+                    positions[2] === -2200 ? 2200 : positions[2] - 1100,
+                    positions[3] === -2200 ? 2200 : positions[3] - 1100,
+                    positions[4] === -2200 ? 2200 : positions[4] - 1100,
+                ]);
 
                 setAnimDirection('');
             }, 400);

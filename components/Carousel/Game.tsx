@@ -10,6 +10,7 @@ const slideLeft = keyframes({
     }
 });
 
+
 const slideRight = keyframes({
     '0%':{
         transform:'translate(0px)'
@@ -60,7 +61,7 @@ const Div = styled('div', {
 });
 
 interface props{
-    game:any; //WHAT IS THE CORRECT TYPE? String doesnt work.
+    game:'gothamKnights' | 'cod' | 'pokemon' | 'grounded' | 'xenoblade';
     slug:string;
     logo:string;
     title:string;
@@ -73,8 +74,20 @@ interface props{
 export default function Game(props:props){
 
     return(
-        <Div game={props.game} animations={props.animDirection === 'left' ? 'slideLeft' : props.animDirection === 'right' ? 'slideRight' : 'none'} style={{translate:props.position}}>
-            <Content review={props.review ? props.review : false} game={props.game} slug={props.slug} logo={props.logo} title={props.title} desc={props.desc}></Content>
+        <Div
+            game={props.game}
+            animations={props.animDirection === 'left' ? 'slideLeft' : props.animDirection === 'right' ? 'slideRight' : 'none'}
+            style={{translate:props.position}}
+            >
+            
+            <Content 
+                review={props.review ? props.review : false}
+                game={props.game}
+                slug={props.slug}
+                logo={props.logo}
+                title={props.title}
+                desc={props.desc}
+            ></Content>
         </Div>
     );
 }
