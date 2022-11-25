@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { ActiveGame } from "../../atoms/ActiveGame";
 import { styled } from "../../stitches.config";
 import Arrow from "./Arrow";
@@ -37,16 +37,12 @@ export default function Carousel(){
 
     useEffect(() => {
 
-       
-
         if(activeGame < previousGame){ //if should move left
-            let amountToMove = previousGame - activeGame;
-            moveLeft(amountToMove);
+            moveLeft();
         }
 
         else if(previousGame < activeGame){ //if should move right
-            let amountToMove = activeGame - previousGame;
-            moveRight(amountToMove);
+            moveRight();
         }
 
         setPreviousGame(activeGame);
@@ -54,65 +50,109 @@ export default function Carousel(){
     }, [activeGame]);
 
 
-    function moveLeft(amount:number){
+    function moveLeft(fromArrow?:boolean){
 
         if(animDirection === ''){
 
             setAnimDirection('left');
 
-            if(activeGame === 0){
-                setActiveGame(4);
-            }
-            else{
-                setActiveGame(activeGame-1);
+            if(fromArrow){ //if not changed from buttons
+
+                if(activeGame === 0){ //if rollover
+                    setActiveGame(4);
+                }
+                else{
+                    setActiveGame(activeGame-1);
+                }
             }
 
             setTimeout(() => {
 
-                setPositions([
-                    positions[0] === 2200 ? -2200 : positions[0] + 1100,
-                    positions[1] === 2200 ? -2200 : positions[1] + 1100,
-                    positions[2] === 2200 ? -2200 : positions[2] + 1100,
-                    positions[3] === 2200 ? -2200 : positions[3] + 1100,
-                    positions[4] === 2200 ? -2200 : positions[4] + 1100,
-                ]);
-    
+                if(fromArrow){
+
+                    setPositions([
+                        positions[0] === 2200 ? -2200 : positions[0] + 1100,
+                        positions[1] === 2200 ? -2200 : positions[1] + 1100,
+                        positions[2] === 2200 ? -2200 : positions[2] + 1100,
+                        positions[3] === 2200 ? -2200 : positions[3] + 1100,
+                        positions[4] === 2200 ? -2200 : positions[4] + 1100,
+                    ]);
+                }
+
+                else{
+
+                    if(activeGame === 0){
+                        setPositions([0, 1100, 2200, -2200, -1100]);
+                    }
+                    if(activeGame === 1){
+                        setPositions([-1100, 0, 1100, 2200, -2200]);
+                    }
+                    if(activeGame === 2){
+                        setPositions([-2200, -1100, 0, 1100, 2200]);
+                    }
+                    if(activeGame === 3){
+                        setPositions([2200, -2200, -1100, 0, 1100]);
+                    }
+                    if(activeGame === 4){
+                        setPositions([1100, 2200, -2200, -1100, 0]);
+                    }
+                }
+
                 setAnimDirection('');
             }, 400);
         }
     }
 
-    function moveRight(amount:number){
+
+    function moveRight(fromArrow?:boolean){
+
+        console.log(positions);
 
         if(animDirection === ''){
 
             setAnimDirection('right');
 
-            if(activeGame === 4){
-                setActiveGame(0);
-            }
-            else{
-                setActiveGame(activeGame+1);
+            if(fromArrow){ //if not changed from buttons
+
+                if(activeGame === 4){ //if rollover
+                    setActiveGame(0);
+                }
+                else{
+                    setActiveGame(activeGame+1);
+                }
             }
 
             setTimeout(() => {
 
-                let pos0 = positions[0] - 1100 * amount;
-                if(pos0 === -2200){ pos0 = 2200; }
+                if(fromArrow){
 
-                let pos1 = positions[0] - 1100 * amount;
-                if(pos1 === -2200){ pos1 = 2200; }
+                    setPositions([
+                        positions[0] === -2200 ? 2200 : positions[0] - 1100,
+                        positions[1] === -2200 ? 2200 : positions[1] - 1100,
+                        positions[2] === -2200 ? 2200 : positions[2] - 1100,
+                        positions[3] === -2200 ? 2200 : positions[3] - 1100,
+                        positions[4] === -2200 ? 2200 : positions[4] - 1100,
+                    ]);
+                }
 
-                let pos2 = positions[0] - 1100 * amount;
-                if(pos2 === -2200){ pos2 = 2200; }
+                else{
 
-                let pos3 = positions[0] - 1100 * amount;
-                if(pos3 === -2200){ pos3 = 2200; }
-
-                let pos4 = positions[0] - 1100 * amount;
-                if(pos4 === -2200){ pos4 = 2200; }
-
-                setPositions([pos0, pos1, pos2, pos3, pos4]);
+                    if(activeGame === 0){
+                        setPositions([0, 1100, 2200, -2200, -1100]);
+                    }
+                    if(activeGame === 1){
+                        setPositions([-1100, 0, 1100, 2200, -2200]);
+                    }
+                    if(activeGame === 2){
+                        setPositions([-2200, -1100, 0, 1100, 2200]);
+                    }
+                    if(activeGame === 3){
+                        setPositions([2200, -2200, -1100, 0, 1100]);
+                    }
+                    if(activeGame === 4){
+                        setPositions([1100, 2200, -2200, -1100, 0]);
+                    }
+                }
 
                 setAnimDirection('');
             }, 400);
@@ -123,11 +163,11 @@ export default function Carousel(){
     return(
         <Container height={{'@carouselHeightMobile': 'mobile'}}>
 
-            <div onClick={() => {moveLeft(1)}}>
+            <div onClick={() => {moveLeft(true)}}>
                 <Arrow direction="left"></Arrow>
             </div>
 
-            <div onClick={() => {moveRight(1)}}>
+            <div onClick={() => {moveRight(true)}}>
                 <Arrow direction="right"></Arrow>
             </div>
 
