@@ -2,7 +2,7 @@ import { styled } from "../../../stitches.config";
 import Links from "./Links";
 
 const Div = styled('div', {
-    width:'100%',
+    width:'100vw',
     position:'absolute',
     bottom:0,
     paddingBottom:15,
@@ -14,7 +14,7 @@ const Div = styled('div', {
         padding:{
             less:{
                 paddingLeft:15,
-                paddingRight:15,
+                paddingRight:15, //padding is taken up by scrollbar but scrollbar wont be visible in mobile
             }
         }
     }

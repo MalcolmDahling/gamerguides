@@ -21,7 +21,7 @@ const slideRight = keyframes({
 
 const Div = styled('div', {
     position:'absolute',
-    width:'100%',
+    width:1100,
     height:'100%',
 
     variants:{

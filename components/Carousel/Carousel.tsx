@@ -1,15 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { ActiveGame } from "../../atoms/ActiveGame";
 import { styled } from "../../stitches.config";
 import Arrow from "./Arrow";
 import Game from "./Game";
+import Switcher from "./Switcher";
 
 const Container = styled('div', {
     position:'relative',
     width:'100%',
+    
     height:665,
 
     overflow:'hidden',
     borderRadius:'10px 10px 0px 0px',
+
+    variants:{
+        height:{
+            mobile:{
+                height:500
+            }
+        }
+    }
 });
 
 
@@ -18,13 +30,42 @@ const Container = styled('div', {
 export default function Carousel(){
 
     const [positions, setPositions] = useState([-2200, -1100, 0, 1100, 2200]);
+    const [activeGame, setActiveGame] = useRecoilState(ActiveGame);
+    const [previousGame, setPreviousGame] = useState(2);
     const [animDirection, setAnimDirection] = useState('');
 
-    function moveLeft(){
+
+    useEffect(() => {
+
+       
+
+        if(activeGame < previousGame){ //if should move left
+            let amountToMove = previousGame - activeGame;
+            moveLeft(amountToMove);
+        }
+
+        else if(previousGame < activeGame){ //if should move right
+            let amountToMove = activeGame - previousGame;
+            moveRight(amountToMove);
+        }
+
+        setPreviousGame(activeGame);
+        
+    }, [activeGame]);
+
+
+    function moveLeft(amount:number){
 
         if(animDirection === ''){
 
             setAnimDirection('left');
+
+            if(activeGame === 0){
+                setActiveGame(4);
+            }
+            else{
+                setActiveGame(activeGame-1);
+            }
 
             setTimeout(() => {
 
@@ -41,35 +82,52 @@ export default function Carousel(){
         }
     }
 
-    function moveRight(){
+    function moveRight(amount:number){
 
         if(animDirection === ''){
 
             setAnimDirection('right');
 
+            if(activeGame === 4){
+                setActiveGame(0);
+            }
+            else{
+                setActiveGame(activeGame+1);
+            }
+
             setTimeout(() => {
 
-                setPositions([
-                    positions[0] === -2200 ? 2200 : positions[0] - 1100,
-                    positions[1] === -2200 ? 2200 : positions[1] - 1100,
-                    positions[2] === -2200 ? 2200 : positions[2] - 1100,
-                    positions[3] === -2200 ? 2200 : positions[3] - 1100,
-                    positions[4] === -2200 ? 2200 : positions[4] - 1100,
-                ]);
+                let pos0 = positions[0] - 1100 * amount;
+                if(pos0 === -2200){ pos0 = 2200; }
+
+                let pos1 = positions[0] - 1100 * amount;
+                if(pos1 === -2200){ pos1 = 2200; }
+
+                let pos2 = positions[0] - 1100 * amount;
+                if(pos2 === -2200){ pos2 = 2200; }
+
+                let pos3 = positions[0] - 1100 * amount;
+                if(pos3 === -2200){ pos3 = 2200; }
+
+                let pos4 = positions[0] - 1100 * amount;
+                if(pos4 === -2200){ pos4 = 2200; }
+
+                setPositions([pos0, pos1, pos2, pos3, pos4]);
 
                 setAnimDirection('');
             }, 400);
         }
     }
 
-    return(
-        <Container>
 
-            <div onClick={moveLeft}>
+    return(
+        <Container height={{'@carouselHeightMobile': 'mobile'}}>
+
+            <div onClick={() => {moveLeft(1)}}>
                 <Arrow direction="left"></Arrow>
             </div>
 
-            <div onClick={moveRight}>
+            <div onClick={() => {moveRight(1)}}>
                 <Arrow direction="right"></Arrow>
             </div>
 
@@ -124,6 +182,7 @@ export default function Carousel(){
                 animDirection={animDirection}
             ></Game>
 
+            <Switcher></Switcher>
         </Container>
     );
 }
