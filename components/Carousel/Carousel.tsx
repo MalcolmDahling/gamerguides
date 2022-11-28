@@ -25,47 +25,58 @@ const Container = styled('div', {
 });
 
 
-
-
 export default function Carousel(){
 
     const [positions, setPositions] = useState([-2200, -1100, 0, 1100, 2200]);
     const [activeGame, setActiveGame] = useRecoilState(ActiveGame);
-    const [previousGame, setPreviousGame] = useState(2);
     const [animDirection, setAnimDirection] = useState('');
 
 
-    useEffect(() => {
+    function buttonClick(direction:string, count:number){
 
-        if(activeGame < previousGame){ //if should move left
-            moveLeft();
+        if(direction === 'left'){
+            document.getElementById('arrowLeft')?.click();
         }
-
-        else if(previousGame < activeGame){ //if should move right
-            moveRight();
+        else{
+            document.getElementById('arrowRight')?.click();
         }
-
-        setPreviousGame(activeGame);
         
-    }, [activeGame]);
+        if(count > 1){
+
+            let i = 1;
+
+            let interval = setInterval(() => {
+
+                if(direction === 'left'){
+                    document.getElementById('arrowLeft')?.click();
+                }
+                else{
+                    document.getElementById('arrowRight')?.click();
+                }
+
+                i++;
+
+                if(i >= count){
+                    clearInterval(interval);
+                }
+            }, 450);
+        }
+    }
 
 
-    function moveLeft(fromArrow?:boolean){
+    function moveLeft(){
 
         if(animDirection === ''){
 
             setAnimDirection('left');
 
-            if(fromArrow){ //if not changed from buttons
-
-                if(activeGame === 0){ //if rollover
-                    setActiveGame(4);
-                }
-                else{
-                    setActiveGame(activeGame-1);
-                }
+            if(activeGame === 0){ //if rollover
+                setActiveGame(4);
             }
-
+            else{
+                setActiveGame(activeGame-1);
+            }
+            
             setTimeout(() => {
 
                 setPositions([
@@ -77,25 +88,23 @@ export default function Carousel(){
                 ]);
 
                 setAnimDirection('');
+
             }, 400);
         }
     }
 
 
-    function moveRight(fromArrow?:boolean){
+    function moveRight(){
 
         if(animDirection === ''){
 
             setAnimDirection('right');
 
-            if(fromArrow){ //if not changed from buttons
-
-                if(activeGame === 4){ //if rollover
-                    setActiveGame(0);
-                }
-                else{
-                    setActiveGame(activeGame+1);
-                }
+            if(activeGame === 4){ //if rollover
+                setActiveGame(0);
+            }
+            else{
+                setActiveGame(activeGame+1);
             }
 
             setTimeout(() => {
@@ -109,6 +118,7 @@ export default function Carousel(){
                 ]);
 
                 setAnimDirection('');
+
             }, 400);
         }
     }
@@ -117,11 +127,11 @@ export default function Carousel(){
     return(
         <Container height={{'@carouselHeightMobile': 'mobile'}}>
 
-            <div onClick={() => {moveLeft(true)}}>
+            <div onClick={moveLeft} id="arrowLeft">
                 <Arrow direction="left"></Arrow>
             </div>
 
-            <div onClick={() => {moveRight(true)}}>
+            <div onClick={moveRight} id="arrowRight">
                 <Arrow direction="right"></Arrow>
             </div>
 
@@ -176,7 +186,7 @@ export default function Carousel(){
                 animDirection={animDirection}
             ></Game>
 
-            <Switcher></Switcher>
+            <Switcher buttonClick={buttonClick}></Switcher>
         </Container>
     );
 }

@@ -60,6 +60,7 @@ const Div = styled('div', {
     },
 });
 
+
 interface props{
     game:'gothamKnights' | 'cod' | 'pokemon' | 'grounded' | 'xenoblade';
     slug:string;
@@ -72,6 +73,7 @@ interface props{
 }
 
 export default function Game(props:props){
+
 
     return(
         <Div
