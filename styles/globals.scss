@@ -3,3 +3,66 @@ html, body {
     margin: 0;
     font-family: Roboto, sans-serif;
 }
+
+
+
+
+//##### Slick #####
+
+.slick-prev{
+    z-index:1;
+    top:125px !important;
+    left:20px !important;
+}
+
+.slick-prev::before{
+    content:url('/images/index/carousel/arrow_left.png') !important;
+    opacity:0.5 !important;  
+}
+
+.slick-prev:hover::before{
+    opacity: 1 !important;
+}
+
+.slick-next{
+    z-index:1;
+    top:125px !important;
+    right:20px !important;
+}
+
+.slick-next::before{
+    content:url('/images/index/carousel/arrow_right.png') !important;
+    opacity:0.5 !important;
+}
+
+.slick-next:hover::before{
+    opacity: 1 !important;
+}
+
+.slick-dots{
+    z-index:1;
+    bottom:-5px !important;
+
+    li{
+        margin-left:10px !important;
+
+        button{
+            width:30px !important;
+            height:3px !important;
+            padding:0px !important;
+            background-color:rgba(255, 255, 255, 0.5) !important;
+        }
+
+        button:before{
+            content:'' !important;
+        }
+    }
+
+    .slick-active{
+
+        button{
+
+            background-color: white !important;
+        }
+    }
+}

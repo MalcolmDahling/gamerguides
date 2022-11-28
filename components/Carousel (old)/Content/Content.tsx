@@ -4,8 +4,6 @@ import Links from "./Links";
 const Div = styled('div', {
     position:'absolute',
     bottom:0,
-    width:'100vw',
-    maxWidth:1100,
     paddingBottom:15,
     paddingLeft:50,
     paddingRight:50,
@@ -16,7 +14,7 @@ const Div = styled('div', {
         padding:{
             less:{
                 paddingLeft:15,
-                paddingRight:30,
+                paddingRight:15, //padding is taken up by scrollbar but scrollbar wont be visible in mobile
             }
         }
     }
@@ -27,11 +25,9 @@ const Logo = styled('img', {
     marginBottom:'3%',
 
     variants:{
-        hide:{
-            true:{
-                // display:'none' doesnt work
-                width:0,
-                height:0,
+        display:{
+            hide:{
+                display:'none',
             }
         }
     }
@@ -67,7 +63,7 @@ export default function Content(props:props){
 
     return(
         <Div padding={{'@carouselMobile': 'less'}}>
-            <Logo src={`/images/index/${props.game}/${props.logo}`} hide={{'@carouselHeightMobile': true}}></Logo>
+            <Logo src={`/images/index/${props.game}/${props.logo}`} display={{'@carouselMobile': 'hide'}}></Logo>
             <Title>{props.title}</Title>
             <Links slug={props.slug} review={props.review}></Links>
             <Desc fontSize={{'@carouselMobile': 'bigger'}}>{props.desc}</Desc>

@@ -36,6 +36,6 @@ type props = {
 export default function Arrow(props:props){
 
     return(
-        <StyledImg direction={props.direction} src="/images/index/arrow.png"></StyledImg>
+        <StyledImg direction={props.direction} src="/images/index/carousel/arrow.png"></StyledImg>
     );
 }
