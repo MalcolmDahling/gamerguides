@@ -59,6 +59,7 @@ export default function Carousel(){
                 if(i >= count){
                     clearInterval(interval);
                 }
+                
             }, 450);
         }
     }
