@@ -2,12 +2,12 @@ import { styled } from "../../../stitches.config";
 import Links from "./Links";
 
 const Div = styled('div', {
-    width:'100vw',
     position:'absolute',
     bottom:0,
     paddingBottom:15,
     paddingLeft:50,
     paddingRight:50,
+    
     boxSizing:'border-box',
 
     variants:{
