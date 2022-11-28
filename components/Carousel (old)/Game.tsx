@@ -1,11 +1,29 @@
-import { styled } from "../../stitches.config";
+import { keyframes, styled } from "../../stitches.config";
 import Content from "./Content/Content";
 
+const slideLeft = keyframes({
+    '0%':{
+        transform:'translate(0px)'
+    },
+    '100%':{
+        transform:'translate(1100px)'
+    }
+});
 
+
+const slideRight = keyframes({
+    '0%':{
+        transform:'translate(0px)'
+    },
+    '100%':{
+        transform:'translate(-1100px)'
+    }
+});
 
 const Div = styled('div', {
+    position:'absolute',
     width:1100,
-    height:665,
+    height:'100%',
 
     variants:{
         game:{
@@ -26,12 +44,20 @@ const Div = styled('div', {
             }
         },
 
-        height:{
-            mobile:{
-                height:500
+        animations:{
+            slideLeft:{
+                animation:`${slideLeft} 400ms forwards`
+            },
+
+            slideRight:{
+                animation:`${slideRight} 400ms forwards`
+            },
+
+            none:{
+
             }
         }
-    }
+    },
 });
 
 
@@ -42,13 +68,19 @@ interface props{
     title:string;
     desc:string;
     review?:boolean;
+    position:number;
+    animDirection:string;
 }
 
 export default function Game(props:props){
 
 
     return(
-        <Div game={props.game} height={{'@carouselHeightMobile': 'mobile'}}>
+        <Div
+            game={props.game}
+            animations={props.animDirection === 'left' ? 'slideLeft' : props.animDirection === 'right' ? 'slideRight' : 'none'}
+            style={{translate:props.position}}
+            >
             
             <Content 
                 review={props.review ? props.review : false}
