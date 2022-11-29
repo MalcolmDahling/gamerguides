@@ -6,3 +6,6 @@ Searchbar in header doesn't close when clicked again. Fixed.
 Game description disappears between 620-600px width. Fixed.
 Links don't really fit at very small screen sizes. Fixed with flexWrap:'wrap'.
 
+
+----- MAIN TOP MENU -----
+Margin between "Now available" an "Coming soon" is not the same as the left side padding. Fixed.
