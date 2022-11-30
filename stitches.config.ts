@@ -20,8 +20,10 @@ export const {
             grayMenu:'#808080',
             grayDark:'#333333',
 
-            red:'#e75971',
             blue:'#0000ff',
+            blueHover:'#4275b9',
+
+            red:'#e75971',
             green:'#20a82c',
             orange:'#d09400',
 

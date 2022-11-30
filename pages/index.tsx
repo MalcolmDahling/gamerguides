@@ -1,5 +1,6 @@
 import Carousel from "../components/Carousel/Carousel";
 import IndexMenu from "../components/IndexMenu/IndexMenu";
+import IndexSection from "../components/IndexSection/IndexSection";
 
 export default function Index() {
 
@@ -7,6 +8,7 @@ export default function Index() {
         <>
             <Carousel></Carousel>
             <IndexMenu></IndexMenu>
+            <IndexSection></IndexSection>
         </>
     );
 }

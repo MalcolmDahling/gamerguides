@@ -11,8 +11,12 @@ const Div = styled('div', {
 const TopDiv = styled('div', {
     width:'100%',
     height:78,
+    paddingLeft:50,
+    paddingRight:50,
+    boxSizing:'border-box',
 
     display:'flex',
+    justifyContent:'space-between',
 
     backgroundColor:'$grayLight', 
 });
