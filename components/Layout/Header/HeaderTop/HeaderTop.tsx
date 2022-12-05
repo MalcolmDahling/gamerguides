@@ -10,7 +10,7 @@ export default function HeaderTop(){
         height:60,
         position:'fixed',
         top:0,
-        zIndex:1,
+        zIndex:2,
         backgroundColor:'$black',
     });
 

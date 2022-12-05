@@ -1,3 +1,4 @@
+import React from "react";
 import { styled } from "../../../stitches.config";
 
 const StyledMain = styled('main', {
@@ -9,7 +10,11 @@ const StyledMain = styled('main', {
     boxShadow:'10px 10px 29px #000'
 });
 
-export default function Main(props:any){
+interface props{
+    children:React.ReactNode;
+}
+
+export default function Main(props:props){
 
     return(
         <StyledMain>
