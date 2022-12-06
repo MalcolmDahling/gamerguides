@@ -91,6 +91,7 @@ export default function Carousel(){
 
                     return(
                         <Game
+                            key={game.game}
                             game={game.game}
                             slug={game.slug}
                             logo={game.logo}

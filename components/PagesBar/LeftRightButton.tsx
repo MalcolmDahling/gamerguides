@@ -1,12 +1,12 @@
-import { styled } from "../../../stitches.config";
+import { styled } from "../../stitches.config";
 
 const Button = styled('button', {
 
     padding:'6px 12px',
 
-    border:'none',
     fontSize:'9pt',
     backgroundColor:'$white',
+    border:'1px solid #D8E3E6',
     
     variants:{
         direction:{

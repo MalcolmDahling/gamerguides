@@ -9,17 +9,14 @@ const Div = styled('div', {
 
     display:'flex',
     flexWrap:'wrap',
-    justifyContent:'space-between'
+    gap:20
 });
 
 interface IGame{
     gameImage:string;
-    gameLink:string;
-    gamePublisher:string;
-    gameReleased:string;
-    gameSlug:string;
     gameTitle:string;
-    guide:any;
+    gameSlug:string;
+    gameReleased:string;
 }
 
 export default function Games(){
@@ -28,12 +25,8 @@ export default function Games(){
 
     async function fetchGames(){
 
-        let res = await axios.get<IGame[]>('/json/guide_formatted.json');
-        
-        res.data.forEach(game => {
-
-            setGames(prev => [...prev, game]);
-        });
+        let res = await axios.get<IGame[]>('/json/index_games.json');
+        setGames(res.data);
     }
 
     useEffect(() => {
@@ -48,6 +41,7 @@ export default function Games(){
 
                     return(
                         <Game 
+                            key={game.gameTitle}
                             gameImage={game.gameImage}
                             gameReleased={game.gameReleased}
                             gameSlug={game.gameSlug}

@@ -46,7 +46,8 @@ export const {
         logoAndFooterMobile:'(max-width:620px)',
 
         carouselMobile:'(max-width:599px)',
-        
-        carouselHeightMobile:'(max-width:620px)'
+        carouselHeightMobile:'(max-width:620px)',
+
+        indexMenuBottom:'(max-width:1029px)'
     }
 });

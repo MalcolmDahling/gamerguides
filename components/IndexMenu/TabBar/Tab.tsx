@@ -11,7 +11,6 @@ const Button = styled('button', {
     position:'relative',
     width:132,
     height:78,
-    marginRight:10,
 
     color:'#777',
     backgroundColor:'$grayLight',

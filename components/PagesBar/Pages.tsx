@@ -1,4 +1,4 @@
-import { styled } from "../../../stitches.config";
+import { styled } from "../../stitches.config";
 
 const Div = styled('div', {
 
@@ -10,7 +10,9 @@ const Div = styled('div', {
     alignItems:'center',
 
     fontSize:12,
-    backgroundColor:'$white'
+    backgroundColor:'$white',
+    borderTop:'1px solid #D8E3E6',
+    borderBottom:'1px solid #D8E3E6',
 });
 
 interface props{

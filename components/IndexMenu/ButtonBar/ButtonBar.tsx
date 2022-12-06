@@ -1,17 +1,30 @@
 import { useEffect, useState } from "react";
 import { styled } from "../../../stitches.config";
 import Button from "./Button";
-import LeftRightButton from "./LeftRightButton";
-import Pages from "./Pages";
+import PagesBar from "../../PagesBar/PagesBar";
 import UpDownButton from "./UpDownButton";
 
 const Div = styled('div', {
 
     height:'100%',
+    marginRight:50,
     
     display:'flex',
+    flexWrap:'wrap',
     gap:20,
-    alignItems:'center'
+    alignItems:'center',
+
+    variants:{
+        onBottom:{
+            true:{
+
+                marginTop:10,
+
+                justifyContent:'center',
+                gap:5
+            }
+        }
+    }
 });
 
 const Div2 = styled('div', {
@@ -20,55 +33,20 @@ const Div2 = styled('div', {
     gap:5
 });
 
-const Div3 = styled('div', {
-    display:'flex',
-    gap:1
-});
-
 export default function ButtonBar(){
 
     const [isActiveButtons, setIsActiveButtons] = useState(0);
     const [isActiveUpDown, setIsActiveUpDown] = useState(1);
 
-    const [isActiveLeft, setIsActiveLeft] = useState(false);
-    const [isActiveRight, setIsActiveRight] = useState(true);
-    const [pageCount, setPageCount] = useState(1);
-    const maxPages:number = 5;
+    
+    
 
 
-    function pageCountChange(input:string){
-
-        if(input === 'subtract' && pageCount !== 1){
-            setPageCount(pageCount - 1);
-        }
-
-        else if(input === 'add' && pageCount !== maxPages){
-            setPageCount(pageCount + 1);
-        }
-    }
-
-
-    useEffect(() => {
-
-        if(pageCount === 1){
-            setIsActiveLeft(false);
-        }
-        else if(pageCount > 1){
-            setIsActiveLeft(true);
-        }
-
-        if(pageCount < maxPages){
-            setIsActiveRight(true);
-        }
-        else{
-            setIsActiveRight(false);
-        }
-
-    }, [pageCount]);
+    
 
 
     return(
-        <Div>
+        <Div onBottom={{'@indexMenuBottom': true}}>
 
             <Button
                 text="Release"
@@ -105,21 +83,7 @@ export default function ButtonBar(){
                 ></UpDownButton>
             </Div2>
 
-            <Div3>
-                <LeftRightButton
-                    direction="left"
-                    isActive={isActiveLeft}
-                    onClick={() => {pageCountChange('subtract')}}
-                ></LeftRightButton>
-
-                <Pages currentPage={pageCount} maxPages={maxPages}></Pages>
-
-                <LeftRightButton
-                    direction="right"
-                    isActive={isActiveRight}
-                    onClick={() => {pageCountChange('add')}}
-                ></LeftRightButton>
-            </Div3>
+            <PagesBar flexBasis={true}></PagesBar>
 
         </Div>
     );

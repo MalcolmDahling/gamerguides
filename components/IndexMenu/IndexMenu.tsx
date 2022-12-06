@@ -11,8 +11,6 @@ const Div = styled('div', {
 const TopDiv = styled('div', {
     width:'100%',
     height:78,
-    paddingLeft:50,
-    paddingRight:50,
     boxSizing:'border-box',
 
     display:'flex',
@@ -25,13 +23,7 @@ const BREAKPOINTS = { under: 1, over: 1030 }
 
 export default function IndexMenu(){
 
-    
     const { breakpoint } = useBreakpoint(BREAKPOINTS, 'over');
-
-    useEffect(() => {
-        console.log(breakpoint);
-        
-    },[breakpoint])
 
     return(
         <Div>
