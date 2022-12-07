@@ -5,6 +5,7 @@ import PagesBar from "../components/PagesBar/PagesBar";
 import IndexMenu from "../components/IndexMenu/IndexMenu";
 import Section from "../components/Section/Section";
 import { styled } from "../stitches.config";
+import useBreakpoint from "use-breakpoint";
 
 const FlexDiv = styled('div', {
     display:'flex',
@@ -12,12 +13,24 @@ const FlexDiv = styled('div', {
     paddingLeft:50,
     paddingRight:50,
     paddingTop:10,
-    paddingBottom:10
+    paddingBottom:10,
+
+    variants:{
+        padding:{
+            true:{
+                paddingLeft:10,
+                paddingRight:10
+            }
+        }
+    }
 });
+
+const BREAKPOINTS = { hide: 1, show: 900 }
+
 
 export default function Index() {
 
-    console.log('index render');
+    const { breakpoint } = useBreakpoint(BREAKPOINTS, 'show');
     
 
     return (
@@ -25,14 +38,14 @@ export default function Index() {
             <Carousel></Carousel>
             <IndexMenu></IndexMenu>
 
-            <FlexDiv>
-                <Section>
-                    <Games></Games>
-                </Section>
+            <FlexDiv padding={{'@indexMenuBottom' : true}}>
+                <Games marginRight={breakpoint === 'show' ? true : false}></Games>
 
-                <Section>
-                    <AdRight></AdRight>
-                </Section>
+                {breakpoint === 'show' && 
+                    <Section>
+                        <AdRight></AdRight>
+                    </Section>
+                }
             </FlexDiv>
 
             <PagesBar paddingBottom={true}></PagesBar>

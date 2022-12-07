@@ -25,6 +25,5 @@ export default function App({ Component, pageProps }: AppProps) {
                 <Footer></Footer>
             </WrapperFullPage>
         </RecoilRoot>
-
     );
 }

@@ -49,7 +49,6 @@ export default function UpDownButton(props:props){
 
     return(
         <Button active={props.isActive} onClick={props.onClick}>
-
             <Img active={props.isActive} src={`/images/index/button_bar/arrow_${props.direction}.png`}></Img>
         </Button>
     );

@@ -48,6 +48,8 @@ export const {
         carouselMobile:'(max-width:599px)',
         carouselHeightMobile:'(max-width:620px)',
 
-        indexMenuBottom:'(max-width:1029px)'
+        indexMenuBottom:'(max-width:1029px)',
+
+        gamesGrid:'(max-width:330px)'
     }
 });

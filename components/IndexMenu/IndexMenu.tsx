@@ -1,7 +1,6 @@
 import { styled } from "../../stitches.config";
 import TabBar from "./TabBar/TabBar";
 import useBreakpoint from 'use-breakpoint';
-import { useEffect } from "react";
 import ButtonBar from "./ButtonBar/ButtonBar";
 
 const Div = styled('div', {

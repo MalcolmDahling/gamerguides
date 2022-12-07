@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { styled } from "../../../stitches.config";
 import Button from "./Button";
 import PagesBar from "../../PagesBar/PagesBar";
@@ -13,11 +13,13 @@ const Div = styled('div', {
     flexWrap:'wrap',
     gap:20,
     alignItems:'center',
+    justifyContent:'center',
 
     variants:{
         onBottom:{
             true:{
-
+                
+                width:'100%',
                 marginTop:10,
 
                 justifyContent:'center',
@@ -27,7 +29,7 @@ const Div = styled('div', {
     }
 });
 
-const Div2 = styled('div', {
+const UpDownButtonsContainer = styled('div', {
 
     display:'flex',
     gap:5
@@ -39,13 +41,8 @@ export default function ButtonBar(){
     const [isActiveUpDown, setIsActiveUpDown] = useState(1);
 
     
-    
-
-
-    
-
-
     return(
+        
         <Div onBottom={{'@indexMenuBottom': true}}>
 
             <Button
@@ -69,7 +66,7 @@ export default function ButtonBar(){
                 onClick={() => {setIsActiveButtons(2)}}
             ></Button>
 
-            <Div2>
+            <UpDownButtonsContainer>
                 <UpDownButton
                     direction="up"
                     isActive={isActiveUpDown === 0 ? true : false}
@@ -81,10 +78,10 @@ export default function ButtonBar(){
                     isActive={isActiveUpDown === 1 ? true : false}
                     onClick={() => {setIsActiveUpDown(1)}}
                 ></UpDownButton>
-            </Div2>
+            </UpDownButtonsContainer>
 
             <PagesBar flexBasis={true}></PagesBar>
 
-        </Div>
+        </Div>  
     );
 }

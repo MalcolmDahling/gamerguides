@@ -2,8 +2,7 @@ import Link from "next/link";
 import { styled } from "../../stitches.config";
 
 const Article = styled('article', {
-
-    flexBasis:'31%',
+    width:'100%',
 
     borderRadius:5,
     boxShadow:'1px 1px 4px lightgrey'
@@ -33,6 +32,7 @@ const H2 = styled('h2', {
 const P = styled('p', {
 
     marginLeft:10,
+    marginBottom:0,
 
     fontSize:'10pt',
     color:'gray'
