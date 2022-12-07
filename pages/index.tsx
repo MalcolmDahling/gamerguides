@@ -27,9 +27,10 @@ const FlexDiv = styled('div', {
 
 const BREAKPOINTS = { hide: 1, show: 900 }
 
+
 export default function Index() {
 
-    const { breakpoint } = useBreakpoint(BREAKPOINTS);
+    const { breakpoint } = useBreakpoint(BREAKPOINTS, 'show');
     
 
     return (

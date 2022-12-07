@@ -42,6 +42,7 @@ export default function ButtonBar(){
 
     
     return(
+        
         <Div onBottom={{'@indexMenuBottom': true}}>
 
             <Button
@@ -81,7 +82,6 @@ export default function ButtonBar(){
 
             <PagesBar flexBasis={true}></PagesBar>
 
-        </Div>
-        
+        </Div>  
     );
 }

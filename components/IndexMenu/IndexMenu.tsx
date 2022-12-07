@@ -22,7 +22,7 @@ const BREAKPOINTS = { under: 1, over: 1030 }
 
 export default function IndexMenu(){
 
-    const { breakpoint } = useBreakpoint(BREAKPOINTS);
+    const { breakpoint } = useBreakpoint(BREAKPOINTS, 'over');
 
     return(
         <Div>
