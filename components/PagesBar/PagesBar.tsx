@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { IndexCurrentPage } from "../../atoms/IndexCurrentPage";
+import { IndexMaxPages } from "../../atoms/IndexMaxPages";
 import { styled } from "../../stitches.config";
 import LeftRightButton from "./LeftRightButton";
 import Pages from "./Pages";
@@ -35,8 +36,8 @@ export default function PagesBar(props:props){
     const [isActiveLeft, setIsActiveLeft] = useState(false);
     const [isActiveRight, setIsActiveRight] = useState(true);
     const [pageCount, setPageCount] = useRecoilState(IndexCurrentPage);
-    const maxPages:number = 5;
-
+    const maxPages = useRecoilValue(IndexMaxPages);
+    
     function pageCountChange(input:string){
 
         if(input === 'subtract' && pageCount !== 1){
@@ -65,7 +66,7 @@ export default function PagesBar(props:props){
             setIsActiveRight(false);
         }
 
-    }, [pageCount]);
+    }, [pageCount, maxPages]);
 
     return(
         <Div flexBasis={props.flexBasis && {'@indexMenuBottom' : true}} paddingBottom={props.paddingBottom}>

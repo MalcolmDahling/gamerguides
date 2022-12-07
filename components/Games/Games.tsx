@@ -1,15 +1,31 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { IndexMaxPages } from "../../atoms/IndexMaxPages";
 import { styled } from "../../stitches.config";
 import Game from "./Game";
 
-const Div = styled('div', {
+const Section = styled('section', {
 
-    marginRight:30,
+    width:'100%',
 
-    display:'flex',
-    flexWrap:'wrap',
-    gap:20
+    display:'grid',
+    gridTemplateColumns:'repeat(auto-fit, minmax(137px, 1fr))',
+    gap:20,
+
+    variants:{
+        marginRight:{
+            true:{
+                marginRight:60
+            }
+        },
+
+        gamesGrid:{
+            true:{
+                gridTemplateColumns:'repeat(auto-fit, minmax(30%, 1fr))',
+            }
+        }
+    }
 });
 
 interface IGame{
@@ -19,14 +35,21 @@ interface IGame{
     gameReleased:string;
 }
 
-export default function Games(){
+interface props{
+    marginRight:boolean;
+}
+
+export default function Games(props:props){
 
     const [games, setGames] = useState<IGame[]>([]);
+    const [indexMaxPages, setIndexMaxPages] = useRecoilState(IndexMaxPages);
 
     async function fetchGames(){
 
         let res = await axios.get<IGame[]>('/json/index_games.json');
         setGames(res.data);
+
+        setIndexMaxPages(Math.ceil(res.data.length / 16));
     }
 
     useEffect(() => {
@@ -36,7 +59,7 @@ export default function Games(){
 
 
     return(
-        <Div>
+        <Section marginRight={props.marginRight} gamesGrid={{'@gamesGrid': true}}>
             {games.map(game => {
 
                     return(
@@ -50,6 +73,6 @@ export default function Games(){
                     );
                 })
             }
-        </Div>
+        </Section>
     );
 }

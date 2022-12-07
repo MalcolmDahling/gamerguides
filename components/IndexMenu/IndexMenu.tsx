@@ -1,7 +1,6 @@
 import { styled } from "../../stitches.config";
 import TabBar from "./TabBar/TabBar";
 import useBreakpoint from 'use-breakpoint';
-import { useEffect } from "react";
 import ButtonBar from "./ButtonBar/ButtonBar";
 
 const Div = styled('div', {
@@ -23,7 +22,7 @@ const BREAKPOINTS = { under: 1, over: 1030 }
 
 export default function IndexMenu(){
 
-    const { breakpoint } = useBreakpoint(BREAKPOINTS, 'over');
+    const { breakpoint } = useBreakpoint(BREAKPOINTS);
 
     return(
         <Div>
