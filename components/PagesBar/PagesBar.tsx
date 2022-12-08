@@ -18,9 +18,13 @@ const Div = styled('div', {
             }
         },
 
-        paddingBottom:{
+        bottom:{
             true:{
-                paddingBottom:10
+
+                position:'absolute',
+                transform:'translate(-50%)',
+                left:'50%',
+                bottom:0
             }
         }
     }
@@ -28,7 +32,7 @@ const Div = styled('div', {
 
 interface props{
     flexBasis?:boolean;
-    paddingBottom?:boolean;
+    bottom?:boolean;
 }
 
 export default function PagesBar(props:props){
@@ -69,7 +73,7 @@ export default function PagesBar(props:props){
     }, [pageCount, maxPages]);
 
     return(
-        <Div flexBasis={props.flexBasis && {'@indexMenuBottom' : true}} paddingBottom={props.paddingBottom}>
+        <Div flexBasis={props.flexBasis && {'@indexMenuBottom' : true}} bottom={props.bottom}>
             <LeftRightButton
                 direction="left"
                 isActive={isActiveLeft}

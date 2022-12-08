@@ -4,11 +4,14 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { IndexCurrentPage } from "../../atoms/IndexCurrentPage";
 import { IndexMaxPages } from "../../atoms/IndexMaxPages";
 import { styled } from "../../stitches.config";
+import PagesBar from "../PagesBar/PagesBar";
 import Game from "./Game";
 
 const Section = styled('section', {
 
     width:'100%',
+    position:'relative',
+    paddingBottom:50,
 
     display:'grid',
     gridTemplateColumns:'repeat(auto-fit, minmax(137px, 1fr))',
@@ -93,6 +96,8 @@ export default function Games(props:props){
 
                 
             })}
+
+            <PagesBar bottom={true}></PagesBar>
         </Section>
     );
 }

@@ -1,7 +1,6 @@
-import AdRight from "../components/AdRight/AdRight";
+import AdSmall from "../components/Ads/AdSmall";
 import Carousel from "../components/Carousel/Carousel";
 import Games from "../components/Games/Games";
-import PagesBar from "../components/PagesBar/PagesBar";
 import IndexMenu from "../components/IndexMenu/IndexMenu";
 import Section from "../components/Section/Section";
 import { styled } from "../stitches.config";
@@ -43,12 +42,10 @@ export default function Index() {
 
                 {breakpoint === 'show' && 
                     <Section>
-                        <AdRight></AdRight>
+                        <AdSmall></AdSmall>
                     </Section>
                 }
             </FlexDiv>
-
-            <PagesBar paddingBottom={true}></PagesBar>
         </>
     );
 }
