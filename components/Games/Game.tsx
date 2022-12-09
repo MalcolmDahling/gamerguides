@@ -1,24 +1,6 @@
 import Link from "next/link";
-import { useState } from "react";
-import { keyframes, styled } from "../../stitches.config";
+import { styled } from "../../stitches.config";
 
-const ScaleUp = keyframes({
-    '0%':{
-        transform:'scale(1)'
-    },
-    '100%':{
-        transform:'scale(1.1)'
-    }
-});
-
-const ScaleDown = keyframes({
-    '0%':{
-        transform:'scale(1.1)'
-    },
-    '100%':{
-        transform:'scale(1)'
-    }
-});
 
 const Article = styled('article', {
     width:'100%',
@@ -27,17 +9,10 @@ const Article = styled('article', {
     boxShadow:'1px 1px 4px lightgrey',
     backgroundColor:'$white',
 
-    variants:{
-        scaleUpAnim:{
-            true:{
-                animation:`${ScaleUp} 200ms forwards`
-            }
-        },
-        scaleDownAnim:{
-            true:{
-                animation:`${ScaleDown} 200ms forwards`,
-            }
-        }
+    transition:'all 200ms',
+
+    '&:hover':{
+        transform:'scale(1.1)'
     }
 });
 
@@ -87,32 +62,17 @@ interface props{
 
 export default function Game(props:props){
 
-    const [scaleUpAnim, setScaleUpAnim] = useState(false);
-    const [ScaleDownAnim, setScaleDownAnim] = useState(false);
-
-
+    
     return(
-        <Article
-            onMouseEnter={() => {
-                setScaleUpAnim(true);
-                setScaleDownAnim(false);
-            }}
-                
-            onMouseLeave={() => {
-                setScaleUpAnim(false);
-                setScaleDownAnim(true);
-            }}
-        
-            scaleUpAnim={scaleUpAnim}
-            scaleDownAnim={ScaleDownAnim}
-        >
-
+        <Article>
 
             <StyledLink href={`/${props.gameSlug}`}>
                 <Img src={props.gameImage}></Img>
-                <H2>{props.gameTitle}</H2>
+                <H2>{props.gameTitle}</H2>  
             </StyledLink>
+
             <P>{props.gameReleased}</P>
+
         </Article>
     );
 }

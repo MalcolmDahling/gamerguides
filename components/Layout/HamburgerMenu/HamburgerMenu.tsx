@@ -1,19 +1,9 @@
 import { ShowHamburgerMenu } from "../../../atoms/ShowHamburgerMenu";
 import { useRecoilValue } from 'recoil';
-import { keyframes, styled } from "../../../stitches.config";
+import { styled } from "../../../stitches.config";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-
-const open = keyframes({
-    '0%':{right:-200},
-    '100%':{right:0}
-});
-
-const close = keyframes({
-    '0%':{right:0},
-    '100%':{right:-200},
-});
 
 const Div = styled('div', {
     position:'fixed',
@@ -21,25 +11,17 @@ const Div = styled('div', {
     bottom:0,
     right:0,
     zIndex:2,
+    transition:'right 250ms',
 
     backgroundColor:'$black',
 
     variants:{
-        anim:{
+        toggle:{
             open:{
-                animation:`${open} 250ms forwards`,
+                right:0
             },
             close:{
-                animation:`${close} 250ms forwards`,
-            }
-        },
-
-        hidden:{
-            visible:{
-                visibility:'visible'
-            },
-            hidden:{
-                visibility:'hidden'
+                right:-200
             }
         }
     }
@@ -127,22 +109,12 @@ const DividingLine = styled('div', {
 export default function HamburgerMenu(){
 
     const showHamburgerMenu = useRecoilValue(ShowHamburgerMenu);
-    const [showHamburgerMenuOnLoad, setShowHamburgerMenuOnLoad] = useState(false);
 
     const router = useRouter();
     const path = router.asPath;
-    
-
-    //to hide the animation on load
-    useEffect(() => {
-
-        setTimeout(() => {
-            setShowHamburgerMenuOnLoad(true);
-        }, 260);
-    }, []);
 
     return(
-        <Div anim={showHamburgerMenu ? 'open' : 'close'} hidden={showHamburgerMenuOnLoad ? 'visible' : 'hidden'}>
+        <Div toggle={showHamburgerMenu ? 'open' : 'close'}>
 
             <nav>
                 <Item hoverColor="white" href="/">

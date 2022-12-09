@@ -13,7 +13,7 @@ const Ad = styled('div', {
     height:300,
     position:'sticky',
     top:70,
-    marginBottom:50,
+    marginBottom:35,
 
     borderRadius:10,
     backgroundColor:'$grayDark'
