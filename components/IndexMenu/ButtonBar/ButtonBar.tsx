@@ -3,6 +3,8 @@ import { styled } from "../../../stitches.config";
 import Button from "./Button";
 import PagesBar from "../../PagesBar/PagesBar";
 import UpDownButton from "./UpDownButton";
+import { useRecoilState } from "recoil";
+import { FetchedGames } from "../../../atoms/FetchedGames";
 
 const Div = styled('div', {
 
@@ -39,7 +41,25 @@ export default function ButtonBar(){
 
     const [isActiveButtons, setIsActiveButtons] = useState(0);
     const [isActiveUpDown, setIsActiveUpDown] = useState(1);
+    const [fetchedGames, setFetchedGames] = useRecoilState(FetchedGames);
 
+    function sortByRelease(){
+
+        
+    }
+
+    function sortAlphabetically(){
+
+        setFetchedGames([...fetchedGames].sort((a, b) => a.gameTitle.localeCompare(b.gameTitle)));
+    }
+
+    function sortReverse(buttonNumber:number){
+
+        if((buttonNumber === 0 && isActiveUpDown === 1) || (buttonNumber === 1 && isActiveUpDown === 0)){
+
+            setFetchedGames([...fetchedGames].reverse());
+        }
+    }
     
     return(
         
@@ -49,14 +69,20 @@ export default function ButtonBar(){
                 text="Release"
                 image="release.png"
                 isActive={isActiveButtons === 0 ? true : false}
-                onClick={() => {setIsActiveButtons(0)}}
+                onClick={() => {
+                    setIsActiveButtons(0);
+                    sortByRelease();
+                }}
             ></Button>
 
             <Button
                 text="Title"
                 image="title.png"
                 isActive={isActiveButtons === 1 ? true : false}
-                onClick={() => {setIsActiveButtons(1)}}
+                onClick={() => {
+                    setIsActiveButtons(1);
+                    sortAlphabetically();
+                }}
             ></Button>
 
             <Button
@@ -70,13 +96,19 @@ export default function ButtonBar(){
                 <UpDownButton
                     direction="up"
                     isActive={isActiveUpDown === 0 ? true : false}
-                    onClick={() => {setIsActiveUpDown(0)}}
+                    onClick={() => {
+                        setIsActiveUpDown(0);
+                        sortReverse(0);
+                    }}
                 ></UpDownButton>
 
                 <UpDownButton
                     direction="down"
                     isActive={isActiveUpDown === 1 ? true : false}
-                    onClick={() => {setIsActiveUpDown(1)}}
+                    onClick={() => {
+                        setIsActiveUpDown(1);
+                        sortReverse(1);
+                    }}
                 ></UpDownButton>
             </UpDownButtonsContainer>
 
