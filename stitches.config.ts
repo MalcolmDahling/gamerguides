@@ -50,6 +50,10 @@ export const {
 
         indexMenuBottom:'(max-width:1029px)',
 
-        gamesGrid:'(max-width:330px)'
+        indexGamesGrid_3_columns_adRight:'(max-width:1100px)',
+        indexGamesGrid_5_columns:'(max-width:899px)',
+        indexGamesGrid_4_columns:'(max-width:880px)',
+        indexGamesGrid_3_columns:'(max-width:660px)',
+        indexGamesGrid_2_columns:'(max-width:440px)',
     }
 });

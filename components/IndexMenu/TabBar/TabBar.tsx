@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { IndexCurrentPage } from "../../../atoms/IndexCurrentPage";
+import { IndexCurrentTab } from "../../../atoms/IndexCurrentTab";
 import { styled } from "../../../stitches.config"
 import Tab from "./Tab";
 
@@ -7,7 +10,7 @@ const Nav = styled('nav', {
     display:'flex',
     gap:10,
     
-    paddingLeft:60,
+    paddingLeft:50,
 
     variants:{
         center:{
@@ -24,12 +27,32 @@ const Nav = styled('nav', {
 
 export default function TabBar(){
 
-    const [isActive, setIsActive] = useState(0);
+    const [indexCurrentTab, setIndexCurrentTab] = useRecoilState(IndexCurrentTab);
+    const [indexCurrentPage, setIndexCurrentPage] = useRecoilState(IndexCurrentPage);
 
     return(
         <Nav center={{'@logoAndFooterMobile': true}}>
-            <Tab text="Now Available" image="now_available.png" isActive={isActive === 0 ? true : false} onClick={() => {setIsActive(0)}}></Tab>
-            <Tab text="Coming Soon" image="coming_soon.png" isActive={isActive === 1 ? true : false} onClick={() => {setIsActive(1)}}></Tab>
+
+            <Tab 
+                text="Now Available"
+                image="now_available.png"
+                isActive={indexCurrentTab === 'Now Available' ? true : false}
+                onClick={() => {
+                    setIndexCurrentTab('Now Available');
+                    setIndexCurrentPage(1);
+                }}
+            ></Tab>
+            
+            <Tab 
+                text="Coming Soon"
+                image="coming_soon.png"
+                isActive={indexCurrentTab === 'Coming Soon' ? true : false}
+                onClick={() => {
+                    setIndexCurrentTab('Coming Soon');
+                    setIndexCurrentPage(1);
+                }}
+            ></Tab>
+        
         </Nav>
     );
 }

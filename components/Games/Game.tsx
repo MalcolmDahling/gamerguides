@@ -3,7 +3,6 @@ import { styled } from "../../stitches.config";
 
 
 const Article = styled('article', {
-    width:'100%',
 
     borderRadius:5,
     boxShadow:'1px 1px 4px lightgrey',
