@@ -21,11 +21,10 @@ const Section = styled('section', {
     gridTemplateColumns:'repeat(4, 1fr)',
     gap:20,
 
-    '@indexGamesGrid_3_columns_adRight':{gridTemplateColumns:'repeat(3, 1fr)'},
-    '@indexGamesGrid_5_columns':{gridTemplateColumns:'repeat(5, 1fr)'},
-    '@indexGamesGrid_4_columns':{gridTemplateColumns:'repeat(4, 1fr)'},
-    '@indexGamesGrid_3_columns':{gridTemplateColumns:'repeat(3, 1fr)'},
-    '@indexGamesGrid_2_columns':{gridTemplateColumns:'repeat(2, 1fr)'},
+    '@bp0':{gridTemplateColumns:'repeat(3, 1fr)'},
+    '@bp2':{gridTemplateColumns:'repeat(4, 1fr)'},
+    '@bp3':{gridTemplateColumns:'repeat(3, 1fr)'},
+    '@bp4':{gridTemplateColumns:'repeat(2, 1fr)'},
 
     variants:{
         marginRight:{

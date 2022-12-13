@@ -26,16 +26,14 @@ const StyledButton = styled('button', {
                 color:'$white !important',
                 backgroundColor:'$red !important'
             }
-        },
-
-        onBottom:{
-            true:{
-                padding:5,
-                borderRadius:5,
-                color:'#7A7A7A',
-                backgroundColor:'transparent'
-            }
         }
+    },
+
+    '@bp1':{
+        padding:5,
+        borderRadius:5,
+        color:'#7A7A7A',
+        backgroundColor:'transparent'
     }
 });
 
@@ -43,12 +41,8 @@ const Img = styled('img', {
     width:16,
     marginRight:7,
 
-    variants:{
-        display:{
-            true:{
-                display:'none'
-            }
-        }
+    '@bp1':{
+        display:'none'
     }
 });
 
@@ -69,10 +63,9 @@ export default function Button(props:props){
         <StyledButton 
             onClick={props.onClick}
             active={props.isActive}
-            onBottom={{'@indexMenuBottom': true}}
         >
 
-            <Img src={`/images/index/button_bar/${props.image}`} display={{'@indexMenuBottom': true}}></Img>
+            <Img src={`/images/index/button_bar/${props.image}`}></Img>
             <Span>{props.text}</Span>
         </StyledButton>
     );

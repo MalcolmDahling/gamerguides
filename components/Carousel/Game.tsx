@@ -24,13 +24,11 @@ const Div = styled('div', {
             xenoblade:{
                 backgroundImage:'linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 50%), url(/images/index/xenoblade/xenoblade.webp)',
             }
-        },
-
-        height:{
-            mobile:{
-                height:500
-            }
         }
+    },
+
+    '@bp3':{
+        height:500
     }
 });
 
@@ -48,7 +46,7 @@ export default function Game(props:props){
 
 
     return(
-        <Div game={props.game} height={{'@carouselHeightMobile': 'mobile'}}>
+        <Div game={props.game}>
             
             <Content 
                 review={props.review ? props.review : false}

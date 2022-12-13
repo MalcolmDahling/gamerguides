@@ -14,22 +14,18 @@ const FlexDiv = styled('div', {
     paddingTop:10,
     paddingBottom:10,
 
-    variants:{
-        padding:{
-            true:{
-                paddingLeft:10,
-                paddingRight:10
-            }
-        }
+    '@bp1':{
+        paddingLeft:10,
+        paddingRight:10
     }
 });
 
-const BREAKPOINTS = { hide: 1, show: 900 }
+const BREAKPOINTS = { low: 1, high: 900 }
 
 
 export default function Index() {
 
-    const { breakpoint } = useBreakpoint(BREAKPOINTS, 'show');
+    const { breakpoint } = useBreakpoint(BREAKPOINTS, 'high');
     
 
     return (
@@ -37,10 +33,10 @@ export default function Index() {
             <Carousel></Carousel>
             <IndexMenu></IndexMenu>
 
-            <FlexDiv padding={{'@indexMenuBottom' : true}}>
-                <Games marginRight={breakpoint === 'show' ? true : false}></Games>
+            <FlexDiv>
+                <Games marginRight={breakpoint === 'high' ? true : false}></Games>
 
-                {breakpoint === 'show' && 
+                {breakpoint === 'high' && 
                     <Section>
                         <AdSmall></AdSmall>
                     </Section>

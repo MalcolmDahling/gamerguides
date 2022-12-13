@@ -10,13 +10,9 @@ const Div = styled('div', {
     
     boxSizing:'border-box',
 
-    variants:{
-        padding:{
-            less:{
-                paddingLeft:15,
-                paddingRight:15, //padding is taken up by scrollbar but scrollbar wont be visible in mobile
-            }
-        }
+    '@bp3':{
+        paddingLeft:15,
+        paddingRight:15, //padding is taken up by scrollbar but scrollbar wont be visible in mobile
     }
 });
 
@@ -24,12 +20,8 @@ const Logo = styled('img', {
     maxWidth:400,
     marginBottom:'3%',
 
-    variants:{
-        display:{
-            hide:{
-                display:'none',
-            }
-        }
+    '@bp3':{
+        display:'none',
     }
 });
 
@@ -41,12 +33,8 @@ const Title = styled('h2', {
 const Desc = styled('p', {
     color:'$white',
 
-    variants:{
-        fontSize:{
-            bigger:{
-                fontSize:'1.2rem',
-            }
-        }
+    '@bp3':{
+        fontSize:'1.2rem',
     }
 });
 
@@ -62,11 +50,11 @@ interface props{
 export default function Content(props:props){
 
     return(
-        <Div padding={{'@carouselMobile': 'less'}}>
-            <Logo src={`/images/index/${props.game}/${props.logo}`} display={{'@carouselMobile': 'hide'}}></Logo>
+        <Div>
+            <Logo src={`/images/index/${props.game}/${props.logo}`}></Logo>
             <Title>{props.title}</Title>
             <Links slug={props.slug} review={props.review}></Links>
-            <Desc fontSize={{'@carouselMobile': 'bigger'}}>{props.desc}</Desc>
+            <Desc>{props.desc}</Desc>
         </Div>
     );
 }

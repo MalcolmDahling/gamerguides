@@ -12,13 +12,9 @@ const Div = styled('div', {
     
     boxSizing:'border-box',
 
-    variants:{
-        padding:{
-            less:{
-                paddingLeft:15,
-                paddingRight:30,
-            }
-        }
+    '@bp3':{
+        paddingLeft:15,
+        paddingRight:30,
     }
 });
 
@@ -26,14 +22,10 @@ const Logo = styled('img', {
     maxWidth:400,
     marginBottom:'3%',
 
-    variants:{
-        hide:{
-            true:{
-                // display:'none' doesnt work
-                width:0,
-                height:0,
-            }
-        }
+    '@bp3':{
+        // display:'none' doesnt work
+        width:0,
+        height:0,
     }
 });
 
@@ -45,12 +37,8 @@ const Title = styled('h2', {
 const Desc = styled('p', {
     color:'$white',
 
-    variants:{
-        fontSize:{
-            bigger:{
-                fontSize:'1.2rem',
-            }
-        }
+    '@bp3':{
+        fontSize:'1.2rem',
     }
 });
 
@@ -66,11 +54,11 @@ interface props{
 export default function Content(props:props){
 
     return(
-        <Div padding={{'@carouselMobile': 'less'}}>
-            <Logo src={`/images/index/${props.game}/${props.logo}`} hide={{'@carouselHeightMobile': true}}></Logo>
+        <Div>
+            <Logo src={`/images/index/${props.game}/${props.logo}`}></Logo>
             <Title>{props.title}</Title>
             <Links slug={props.slug} review={props.review}></Links>
-            <Desc fontSize={{'@carouselMobile': 'bigger'}}>{props.desc}</Desc>
+            <Desc>{props.desc}</Desc>
         </Div>
     );
 }

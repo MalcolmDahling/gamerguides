@@ -15,12 +15,8 @@ const Container = styled('div', {
     overflow:'hidden',
     borderRadius:'10px 10px 0px 0px',
 
-    variants:{
-        height:{
-            mobile:{
-                height:500
-            }
-        }
+    '@bp3':{
+        height:500
     }
 });
 
@@ -126,7 +122,7 @@ export default function Carousel(){
 
 
     return(
-        <Container height={{'@carouselHeightMobile': 'mobile'}}>
+        <Container>
 
             <div onClick={moveLeft} id="arrowLeft">
                 <Arrow direction="left"></Arrow>

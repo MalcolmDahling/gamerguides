@@ -8,23 +8,17 @@ const Nav = styled('nav', {
 
     display:'flex',
     
+    gap:20,
 
-    variants:{
-        flexGap:{
-            desktop:{
-                gap:20
-            },
-            mobile:{
-                gap:10
-            }
-        }
+    '@bp3':{
+        gap:10
     }
 });
 
 export default function Socials(){
 
     return(
-        <Nav  flexGap={{'@logoAndFooterDesktop': 'desktop', '@logoAndFooterMobile': 'mobile'}}>
+        <Nav>
             <IconLink url="https://play.google.com/store/books/author?id=GamerGuides.com" img="/images/socials/google_play.png"></IconLink>
             <IconLink url="https://itunes.apple.com/us/author/gamerguides-com/id482893078?mt=11" img="/images/socials/apple.png"></IconLink>
             <IconLink url="https://www.youtube.com/c/GamerGuidesOfficial" img="/images/socials/youtube.png"></IconLink>

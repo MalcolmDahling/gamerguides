@@ -28,18 +28,12 @@ export default function HeaderTop(){
         backgroundRepeat:'no-repeat',
         backgroundPosition:'center',
 
-        variants:{
-            source:{
-                desktop:{
-                    backgroundImage:'url(/images/logo/logo_desktop.png)',
-                    backgroundSize:'100%',
+        backgroundImage:'url(/images/logo/logo_desktop.png)',
+        backgroundSize:'100%',
 
-                },
-                mobile:{
-                    backgroundImage:'url(/images/logo/logo_phone.png)',
-                    backgroundSize:'50%',
-                }
-            }
+        '@bp3':{
+            backgroundImage:'url(/images/logo/logo_phone.png)',
+            backgroundSize:'50%',
         }
     });
 
@@ -48,7 +42,7 @@ export default function HeaderTop(){
     return(
         <Div>
             <StyledLink href="/">
-                <Img source={{'@logoAndFooterDesktop': 'desktop', '@logoAndFooterMobile': 'mobile'}}></Img>
+                <Img></Img>
             </StyledLink>
 
             <Menu></Menu>

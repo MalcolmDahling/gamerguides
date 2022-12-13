@@ -78,7 +78,7 @@ export default function PagesBar(props:props){
     }, [pageCount, maxPages]);
 
     return(
-        <Div flexBasis={props.flexBasis && {'@indexMenuBottom' : true}} bottom={props.bottom}>
+        <Div flexBasis={props.flexBasis && {'@bp1' : true}} bottom={props.bottom}>
             <LeftRightButton
                 direction="left"
                 isActive={isActiveLeft}

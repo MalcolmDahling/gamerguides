@@ -12,12 +12,8 @@ const StyledSlider = styled(Slider, {
 
     overflow:'hidden',
 
-    variants:{
-        height:{
-            mobile:{
-                height:500
-            }
-        }
+    '@bp3':{
+        height:500
     }
 });
 
@@ -84,7 +80,7 @@ export default function Carousel(){
 
     
     return(
-        <StyledSlider {...settings} height={{'@carouselHeightMobile': 'mobile'}}>
+        <StyledSlider {...settings}>
  
             {
                 games.map(game => {

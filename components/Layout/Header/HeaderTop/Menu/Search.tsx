@@ -41,19 +41,13 @@ const SearchBar = styled('input', {
                 visibility:'hidden'
             }
         },
+    },
 
-        moveRight:{
-            none:{
-                right:217,
-            },
-            little:{
-                right:193,
-            },
-            more:{
-                right:98
-            }
-        }
-    }
+    
+    right:217,
+
+    '@bp2':{ right:193 },
+    '@bp3':{ right:98 }
 });
 
 const SearchButton = styled('div', {
@@ -95,7 +89,7 @@ export default function Search(){
 
     return(
         <>
-            <SearchBar moveRight={{'@menuPaddingRightDesktop': 'none', '@menuPaddingRightMobile': 'little', '@premiumButtonMobile': 'more'}} anim={showSearchBar ? 'open' : 'close'} hidden={enableSearchBar ? 'visible' : 'hidden'} placeholder="Search Guides"></SearchBar>
+            <SearchBar anim={showSearchBar ? 'open' : 'close'} hidden={enableSearchBar ? 'visible' : 'hidden'} placeholder="Search Guides"></SearchBar>
 
             <SearchButton onClick={() => { setShowSearchBar(!showSearchBar) }}>
                     <SearchIcon src="/images/headerTop/search.png" />

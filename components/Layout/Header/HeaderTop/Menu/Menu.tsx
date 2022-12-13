@@ -11,15 +11,11 @@ const Div = styled('div', {
     justifyContent:'end',
     alignItems:'center',
 
-    variants:{
-        paddingRight:{
-            desktop:{
-                paddingRight:'3rem',
-            },
-            mobile:{
-                paddingRight:'1.5rem',
-            }
-        }
+
+    paddingRight:'3rem',
+
+    '@bp2':{
+        paddingRight:'1.5rem'
     }
 });
 
@@ -28,7 +24,7 @@ export default function Menu(){
 
 
     return(
-        <Div paddingRight={{'@menuPaddingRightDesktop': 'desktop', '@menuPaddingRightMobile': 'mobile' }}>
+        <Div>
             <Search></Search>
             <Premium></Premium>
             <Hamburger></Hamburger>

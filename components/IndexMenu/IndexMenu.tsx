@@ -18,20 +18,20 @@ const TopDiv = styled('div', {
     backgroundColor:'$grayLight', 
 });
 
-const BREAKPOINTS = { under: 1, over: 1030 }
+const BREAKPOINTS = { low: 1, high: 1001 }
 
 export default function IndexMenu(){
 
-    const { breakpoint } = useBreakpoint(BREAKPOINTS, 'over');
+    const { breakpoint } = useBreakpoint(BREAKPOINTS, 'high');
 
     return(
         <Div>
             <TopDiv>
                 <TabBar></TabBar>
-                {breakpoint === 'over' && <ButtonBar></ButtonBar>}
+                {breakpoint === 'high' && <ButtonBar></ButtonBar>}
             </TopDiv>
             
-            {breakpoint === 'under' && <ButtonBar></ButtonBar>}
+            {breakpoint === 'low' && <ButtonBar></ButtonBar>}
         </Div>
     );
 }

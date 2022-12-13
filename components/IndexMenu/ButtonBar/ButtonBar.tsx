@@ -17,17 +17,12 @@ const Div = styled('div', {
     alignItems:'center',
     justifyContent:'center',
 
-    variants:{
-        onBottom:{
-            true:{
-                
-                width:'100%',
-                marginTop:10,
+    '@bp1':{
+        width:'100%',
+        marginTop:10,
 
-                justifyContent:'center',
-                gap:5
-            }
-        }
+        justifyContent:'center',
+        gap:5
     }
 });
 
@@ -63,7 +58,7 @@ export default function ButtonBar(){
     
     return(
         
-        <Div onBottom={{'@indexMenuBottom': true}}>
+        <Div>
 
             <Button
                 text="Release"

@@ -6,11 +6,16 @@ import HamburgerMenu from '../components/Layout/HamburgerMenu/HamburgerMenu';
 import WrapperFullPage from '../components/Layout/WrapperFullPage/WrapperFullPage';
 import Footer from '../components/Layout/Footer/Footer';
 import Main from '../components/Layout/Main/Main';
-import AdLarge from '../components/Ads/AdLarge';
+import AdBottom from '../components/Ads/AdBottom';
+import useBreakpoint from 'use-breakpoint';
+
+const BREAKPOINTS = {low: 1, high: 1000};
 
 export default function App({ Component, pageProps }: AppProps) {
     
     //https://www.gamerguides.com/
+
+    const {breakpoint} = useBreakpoint(BREAKPOINTS, 'high');
 
     return(
         <RecoilRoot>
@@ -23,8 +28,8 @@ export default function App({ Component, pageProps }: AppProps) {
                     <Component {...pageProps} />
                 </Main>
                 
-                <AdLarge></AdLarge>
-
+                <AdBottom></AdBottom>
+                
                 <Footer></Footer>
             </WrapperFullPage>
         </RecoilRoot>

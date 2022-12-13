@@ -36,24 +36,11 @@ export const {
     },
 
     media:{
-        premiumButtonDesktop:'(min-width:530px)',
-        premiumButtonMobile:'(max-width:529px)',
 
-        menuPaddingRightDesktop:'(min-width:900px)',
-        menuPaddingRightMobile:'(max-width:899px)',
-
-        logoAndFooterDesktop:'(min-width:621px)',
-        logoAndFooterMobile:'(max-width:620px)',
-
-        carouselMobile:'(max-width:599px)',
-        carouselHeightMobile:'(max-width:620px)',
-
-        indexMenuBottom:'(max-width:1029px)',
-
-        indexGamesGrid_3_columns_adRight:'(max-width:1100px)',
-        indexGamesGrid_5_columns:'(max-width:899px)',
-        indexGamesGrid_4_columns:'(max-width:880px)',
-        indexGamesGrid_3_columns:'(max-width:660px)',
-        indexGamesGrid_2_columns:'(max-width:440px)',
+        bp0:'(max-width:1100px)',
+        bp1:'(max-width:1000px)',
+        bp2:'(max-width:900px)',
+        bp3:'(max-width:600px)',
+        bp4:'(max-width:450px)',
     }
 });

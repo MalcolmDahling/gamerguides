@@ -12,16 +12,11 @@ const Nav = styled('nav', {
     
     paddingLeft:50,
 
-    variants:{
-        center:{
-            true:{
-                width:'100%',
-                paddingLeft:0,
-
-                
-                justifyContent:'center'
-            }
-        }
+    '@bp3':{
+        width:'100%',
+        paddingLeft:0,
+  
+        justifyContent:'center'
     }
 });
 
@@ -31,7 +26,7 @@ export default function TabBar(){
     const [indexCurrentPage, setIndexCurrentPage] = useRecoilState(IndexCurrentPage);
 
     return(
-        <Nav center={{'@logoAndFooterMobile': true}}>
+        <Nav>
 
             <Tab 
                 text="Now Available"

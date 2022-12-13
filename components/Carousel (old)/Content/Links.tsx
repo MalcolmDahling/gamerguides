@@ -9,15 +9,11 @@ const Div = styled('div', {
     justifyContent:'start',
     gap:15,
 
-    variants:{
-        flexSpaceBetween:{
-            true:{
-                justifyContent:'space-between',
-                flexWrap:'wrap',
-                gap:5
-            }
-        }
-    },
+    '@bp3':{
+        justifyContent:'space-between',
+        flexWrap:'wrap',
+        gap:5
+    }
 });
 
 const StyledLink = styled(Link, {
@@ -46,14 +42,10 @@ const StyledLink = styled(Link, {
     justifyContent:'center',
     gap:10,
 
-    variants:{
-        flexGrow:{
-            true:{
-                paddingLeft:5,
-                paddingRight:5,
-                flexGrow:1,
-            }
-        }
+    '@bp3':{
+        paddingLeft:5,
+        paddingRight:5,
+        flexGrow:1,
     }
 });
 
@@ -74,20 +66,20 @@ interface props{
 export default function Links(props:props){
 
     return(
-        <Div flexSpaceBetween={{'@carouselMobile': true}}>
+        <Div>
             {props.review &&
-                <StyledLink href={`/${props.slug}/review`} flexGrow={{'@carouselMobile': true}}>
+                <StyledLink href={`/${props.slug}/review`}>
                     <Img src="/images/index/carousel/review.png"></Img>
                     <Span>Review</Span>
                 </StyledLink>
             }
 
-            <StyledLink href={`/${props.slug}/guide`} flexGrow={{'@carouselMobile': true}}>
+            <StyledLink href={`/${props.slug}/guide`}>
                 <Img src="/images/index/carousel/guide.png"></Img>
                 <Span>Guide</Span>
             </StyledLink>
 
-            <StyledLink href={`/${props.slug}`} flexGrow={{'@carouselMobile': true}}>
+            <StyledLink href={`/${props.slug}`}>
                 <Img src="/images/index/carousel/about.png"></Img>
                 <Span>About</Span>
             </StyledLink>
