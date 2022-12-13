@@ -10,3 +10,7 @@ Links don't really fit at very small screen sizes. Fixed with flexWrap:'wrap'.
 ----- MAIN TOP MENU -----
 Margin between "Now available" an "Coming soon" is not the same as the left side padding on smaller resolutions.
 Up/down buttons are not centered.
+
+
+----- GAME SORTING -----
+Sorting by publisher is wrong, probably reversed.

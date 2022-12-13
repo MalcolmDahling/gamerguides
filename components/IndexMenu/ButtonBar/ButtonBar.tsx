@@ -38,24 +38,53 @@ export default function ButtonBar(){
     const [isActiveUpDown, setIsActiveUpDown] = useState(1);
     const [fetchedGames, setFetchedGames] = useRecoilState(FetchedGames);
 
+
     function sortByRelease(){
 
-        
+        setFetchedGames([...fetchedGames].sort(
+            
+            (a, b) => {
+
+                let dateA:any = new Date(a.gameReleased);
+                let dateB:any = new Date(b.gameReleased);
+
+                return dateB - dateA;
+            }
+        ));
+
+        setIsActiveUpDown(1);
     }
+
 
     function sortAlphabetically(){
 
-        setFetchedGames([...fetchedGames].sort((a, b) => a.gameTitle.localeCompare(b.gameTitle)));
+        setFetchedGames([...fetchedGames].sort(
+
+            (a, b) => a.gameTitle.localeCompare(b.gameTitle)
+        ));
+
+        setIsActiveUpDown(1);
     }
+
+
+    function sortByPublisher(){
+
+        setFetchedGames([...fetchedGames].sort(
+
+            (a, b) => a.gamePublisher.localeCompare(b.gamePublisher)
+        ));
+    }
+
 
     function sortReverse(buttonNumber:number){
 
         if((buttonNumber === 0 && isActiveUpDown === 1) || (buttonNumber === 1 && isActiveUpDown === 0)){
-
+            
             setFetchedGames([...fetchedGames].reverse());
         }
     }
-    
+
+
     return(
         
         <Div>
@@ -84,7 +113,10 @@ export default function ButtonBar(){
                 text="Publisher"
                 image="publisher.png"
                 isActive={isActiveButtons === 2 ? true : false}
-                onClick={() => {setIsActiveButtons(2)}}
+                onClick={() => {
+                    setIsActiveButtons(2)
+                    sortByPublisher();
+                }}
             ></Button>
 
             <UpDownButtonsContainer>

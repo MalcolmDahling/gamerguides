@@ -3,4 +3,5 @@ export interface IGame{
     gameTitle:string;
     gameSlug:string;
     gameReleased:string;
+    gamePublisher:string;
 }
