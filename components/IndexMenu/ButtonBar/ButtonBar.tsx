@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { styled } from "../../../stitches.config";
 import Button from "./Button";
 import PagesBar from "../../PagesBar/PagesBar";
@@ -39,40 +39,59 @@ export default function ButtonBar(){
     const [fetchedGames, setFetchedGames] = useRecoilState(FetchedGames);
 
 
+    useEffect(() => {
+
+        sortByRelease();
+    }, []);
+
+
     function sortByRelease(){
 
-        setFetchedGames([...fetchedGames].sort(
+        const arr = ([...fetchedGames].sort(
             
             (a, b) => {
 
-                let dateA:any = new Date(a.gameReleased);
-                let dateB:any = new Date(b.gameReleased);
+                let dateA:Date = new Date(a.gameReleased);
+                let dateB:Date = new Date(b.gameReleased);
 
-                return dateB - dateA;
+                if(dateA.getTime() === dateB.getTime()){
+
+                    return a.gameTitle.localeCompare(b.gameTitle);
+                }
+
+                return dateB.getTime() - dateA.getTime();
             }
         ));
 
-        setIsActiveUpDown(1);
+        setFetchedGames(isActiveUpDown === 0 ? arr.reverse() : arr);
     }
 
 
     function sortAlphabetically(){
 
-        setFetchedGames([...fetchedGames].sort(
+        const arr = ([...fetchedGames].sort(
+            
+            (a, b) => {
 
-            (a, b) => a.gameTitle.localeCompare(b.gameTitle)
+                return a.gameTitle.localeCompare(b.gameTitle);
+            }
         ));
 
-        setIsActiveUpDown(1);
+        setFetchedGames(isActiveUpDown === 0 ? arr.reverse() : arr);
     }
 
 
     function sortByPublisher(){
 
-        setFetchedGames([...fetchedGames].sort(
+        const arr = ([...fetchedGames].sort(
 
-            (a, b) => a.gamePublisher.localeCompare(b.gamePublisher)
-        ));
+            (a, b) => {
+                
+                return a.gamePublisher.localeCompare(b.gamePublisher);
+            }
+        ))
+
+        setFetchedGames(isActiveUpDown === 0 ? arr.reverse() : arr);
     }
 
 
