@@ -16,16 +16,26 @@ const Ad = styled('div', {
     marginBottom:35,
 
     borderRadius:10,
-    backgroundColor:'$grayDark'
+    backgroundColor:'$grayDark',
+
+    variants:{
+        transparentBackgroundColor:{
+            true:{
+                backgroundColor:'$blackTransparent'
+            }
+        }
+    }
 });
 
+interface props{
+    transparentBackgroundColor?:boolean;
+}
 
-
-export default function AdSmall(){
+export default function AdSmall(props:props){
 
     return(
         <Container>
-            <Ad>
+            <Ad transparentBackgroundColor={props.transparentBackgroundColor}>
                 <Subscribe width="small"></Subscribe>
             </Ad>
         </Container>

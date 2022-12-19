@@ -10,6 +10,7 @@ import { IGame } from "../../models/IGame";
 import { styled } from "../../stitches.config";
 import PagesBar from "../PagesBar/PagesBar";
 import Game from "./Game";
+import useSWR from 'swr';
 
 const Section = styled('section', {
 
@@ -43,9 +44,7 @@ export default function Games(props:props){
 
     const [fetchedGames, setFetchedGames] = useRecoilState(FetchedGames);
     const [indexMaxPages, setIndexMaxPages] = useRecoilState(IndexMaxPages);
-
     const [fetchedGamesComingSoon, setFetchedGamesComingSoon] = useRecoilState(FetchedGamesComingSoon)
-    
     const indexCurrentPage = useRecoilValue(IndexCurrentPage);
     const indexCurrentTab = useRecoilValue(IndexCurrentTab);
 

@@ -20,7 +20,7 @@ const FlexDiv = styled('div', {
     }
 });
 
-const BREAKPOINTS = { low: 1, high: 900 }
+const BREAKPOINTS = { low: 1, high: 900 };
 
 
 export default function Index() {
@@ -30,6 +30,8 @@ export default function Index() {
 
     return (
         <>
+            <h1 style={{display:'none'}}>Gamer Guides</h1> {/*Does this work for SEO?*/}
+
             <Carousel></Carousel>
             <IndexMenu></IndexMenu>
 

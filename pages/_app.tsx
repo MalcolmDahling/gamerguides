@@ -8,6 +8,7 @@ import Footer from '../components/Layout/Footer/Footer';
 import Main from '../components/Layout/Main/Main';
 import AdBottom from '../components/Ads/AdBottom';
 import useBreakpoint from 'use-breakpoint';
+import { useRouter } from 'next/router';
 
 const BREAKPOINTS = {low: 1, high: 1000};
 
@@ -16,6 +17,8 @@ export default function App({ Component, pageProps }: AppProps) {
     //https://www.gamerguides.com/
 
     const {breakpoint} = useBreakpoint(BREAKPOINTS, 'high');
+    const router = useRouter();
+
 
     return(
         <RecoilRoot>
@@ -24,11 +27,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
                 <HamburgerMenu></HamburgerMenu>
 
-                <Main>
+                <Main index={router.pathname === '/' ? true : false}>
                     <Component {...pageProps} />
                 </Main>
                 
-                <AdBottom></AdBottom>
+                {router.pathname === '/' && <AdBottom></AdBottom>}
                 
                 <Footer></Footer>
             </WrapperFullPage>

@@ -14,11 +14,14 @@ export const {
     theme:{
         colors:{
             black:'#000000',
+            blackTransparent:'rgba(0,0,0,0.8)',
+
             white:'#ffffff',
             grayLight:'#d9d9d9',
             grayMid:'#40444c',
             grayMenu:'#808080',
             grayDark:'#333333',
+            grayLink:'#BBBBBB',
 
             blue:'#0000ff',
             blueHover:'#4275b9',

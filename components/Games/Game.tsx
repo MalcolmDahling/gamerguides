@@ -65,7 +65,7 @@ export default function Game(props:props){
     return(
         <Article>
 
-            <StyledLink href={`/${props.gameSlug}`}>
+            <StyledLink href={`/${props.gameSlug}/guide`}>
                 <Img src={props.gameImage}></Img>
                 <H2>{props.gameTitle}</H2>  
             </StyledLink>
