@@ -4,6 +4,7 @@ import Subscribe from "./Subscribe";
 
 const Div = styled('div', {
 
+    width:'100%',
     maxWidth:1000,
     margin:'auto',
     height:300,

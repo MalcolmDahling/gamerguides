@@ -1,6 +1,5 @@
 import { IGame } from "../../models/IGame";
 import { styled } from "../../stitches.config";
-import Game from "../Carousel/Game";
 import Button from "./Button";
 import OuterContainer from "./OuterContainer";
 
@@ -77,7 +76,7 @@ export default function InfoBox(props:props){
                     <H1>{props.game?.gameTitle}</H1>
                     <P>Guide and Walkthrough</P>
                     <Info>Published: <InfoSpan>{props.game?.gameReleased}</InfoSpan></Info>
-                    <Info>Last Updated: <InfoSpan>x min ago.</InfoSpan></Info>
+                    <Info>Last Updated: <InfoSpan>1 min ago.</InfoSpan></Info>
                     <Info>Version: 1.0</Info>
                 </Div>
             </ContainerRight>

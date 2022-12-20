@@ -6,7 +6,6 @@ const Div = styled('div', {
     height:'fit-content',
     display:'flex',
     
-   
     borderRadius:10,
     backgroundColor:'$blackTransparent',
     boxShadow:'10px 10px 29px #000',

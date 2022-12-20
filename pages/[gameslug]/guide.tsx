@@ -2,7 +2,9 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useBreakpoint from "use-breakpoint";
+import AdBottom from "../../components/Ads/AdBottom";
 import AdSmall from "../../components/Ads/AdSmall";
+import Content from "../../components/Guide/Content";
 import InfoBox from "../../components/Guide/InfoBox";
 import TopBar from "../../components/Guide/TopBar";
 import Section from "../../components/Section/Section";
@@ -19,7 +21,7 @@ const FlexDiv = styled('div', {
     gap:20,
 });
 
-const Div = styled('div', {
+const FlexColumn = styled('div', {
 
     width:'100%',
 
@@ -40,16 +42,15 @@ export default function Game(){
     const { breakpoint } = useBreakpoint(BREAKPOINTS, 'high');
 
 
-    async function fetchGames(){
-
-        const res = await axios.get<IGame[]>('/json/guide_formatted.json');
-        setCurrentGame(res.data.find(element => element.gameSlug === gameslug));
-
-        let found = res.data.find(element => element.gameSlug === gameslug); //remove line when everything is working
-        console.log(found); //remove line when everything is working
-    }
+    
 
     useEffect(() => {
+
+        async function fetchGames(){
+
+            const res = await axios.get<IGame[]>('/json/guide_formatted.json');
+            setCurrentGame(res.data.find(element => element.gameSlug === gameslug));
+        }
 
         fetchGames();
     }, []);
@@ -57,10 +58,14 @@ export default function Game(){
     return(
         <FlexDiv>
 
-            <Div>
+            <FlexColumn>
                 <TopBar game={currentGame}></TopBar>
                 <InfoBox game={currentGame}></InfoBox>
-            </Div>
+
+                <AdBottom></AdBottom>
+                
+                <Content game={currentGame}></Content>
+            </FlexColumn>
 
             {breakpoint === 'high' && 
                 <Section>
