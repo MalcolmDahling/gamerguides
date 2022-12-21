@@ -27,14 +27,16 @@ interface SectionChapter{
 interface ChapterPaths{
 
     chapterLink:string;
+    articleData:ArticleData;
+}
+
+interface ArticleData{
     
-    articleData:{
-        sectionTitle_bc:string;
-        chapterHeader_bc:string;
-        chapterTitle_bc:string;
-        slugifiedUrl:string;
-        chapterContent:ChapterContent[];
-    }
+    sectionTitle_bc:string;
+    chapterHeader_bc:string;
+    chapterTitle_bc:string;
+    slugifiedUrl:string;
+    chapterContent:ChapterContent[];
 }
 
 interface ChapterContent{

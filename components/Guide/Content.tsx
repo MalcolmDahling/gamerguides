@@ -50,39 +50,44 @@ export default function Content(props:props){
     return(
 
         <>
-            {props.game?.guide.sectionData.map(sectionData => {
+            {props.game?.guide.sectionData.map((sectionData, i) => {
 
                 return(
                     
-                    <>
-                        {sectionData.sectionChapter.map(sectionChapter => {
+                    <div key={`first${i}`}>
+                        {sectionData.sectionChapter.map((sectionChapter, j) => {
 
                             return(
 
-                                <>
-                                    {sectionChapter.chapterPaths.map((chapterPath, i) => {
+                                <div key={`second${j}`}>
+                                    {sectionChapter.chapterPaths.map((chapterPath, n) => {
 
                                         return(
-                                            <Outer key={i}>
-                                                <Top>
-                                                    <Breadcrumbs>
-                                                        <StyledLink href=""></StyledLink>
-                                                        <Span>{' \> '}</Span>
-                                                        <StyledLink href=""></StyledLink>
-                                                    </Breadcrumbs>
-                                                </Top>
-                                    
-                                                <Div>
-                                                    asdf
-                                                </Div>
+
+                                            <div key={`third${n}`}>
+                                                {chapterPath.articleData !== undefined &&
+                                                    <Outer>
+                                                        <Top>
+                                                            <Breadcrumbs>
+                                                                <StyledLink href="">{chapterPath.articleData.sectionTitle_bc}</StyledLink>
+                                                                <Span>{' \> '}</Span>
+                                                                <StyledLink href="">{chapterPath.articleData.chapterHeader_bc}</StyledLink>
+                                                            </Breadcrumbs>
+                                                        </Top>
                                             
-                                            </Outer>
+                                                        <Div>
+                                                            asdf
+                                                        </Div>
+                                                    
+                                                    </Outer>
+                                                }
+                                            </div>
                                         );
                                     })}
-                                </>
+                                </div>
                             );
                         })} 
-                    </>
+                    </div>
                 );
             })} 
         </>

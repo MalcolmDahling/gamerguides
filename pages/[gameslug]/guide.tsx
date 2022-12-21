@@ -35,25 +35,21 @@ const BREAKPOINTS = { low: 1, high: 1110 };
 export default function Game(){
 
     const [currentGame, setCurrentGame] = useState<IGame>();
-
     const router = useRouter();
-    const {gameslug} = router.query;
-
+    const { gameslug } = router.query;
     const { breakpoint } = useBreakpoint(BREAKPOINTS, 'high');
 
-
     
+    async function fetchGames(){
+
+        const res = await axios.get<IGame[]>('/json/guide_formatted.json');
+        setCurrentGame(res.data.find(element => element.gameSlug === gameslug));
+    }
 
     useEffect(() => {
 
-        async function fetchGames(){
-
-            const res = await axios.get<IGame[]>('/json/guide_formatted.json');
-            setCurrentGame(res.data.find(element => element.gameSlug === gameslug));
-        }
-
         fetchGames();
-    }, []);
+    }, [gameslug]);
 
     return(
         <FlexDiv>
